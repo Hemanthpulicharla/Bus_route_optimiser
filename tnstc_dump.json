@@ -1,0 +1,2594 @@
+[
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "91"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "92"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "93"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "94"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "95"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "96"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "97"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "98"
+    },
+    {
+        "from": "TRICHY",
+        "to": "CHENNAI (KCBT)",
+        "dep": "12:10 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "99"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "64"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "114"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "AC SEATER SLEEPER",
+        "_id": "148"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "149"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "150"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "190"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "AC",
+        "_id": "228"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "229"
+    },
+    {
+        "from": "TRICHY",
+        "to": "MADURAI",
+        "dep": "12:25 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "258"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "AC",
+        "_id": "53"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "AC",
+        "_id": "186"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "218"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:35 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "315"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "420"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:55 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "497"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "12:59 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "544"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "1:06 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "635"
+    },
+    {
+        "from": "TRICHY",
+        "to": "COIMBATORE",
+        "dep": "1:10 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "656"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "240"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "299"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "375"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "465"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "12:59 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "549"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "631"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "1:10 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "678"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "1:30 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "849"
+    },
+    {
+        "from": "TRICHY",
+        "to": "SALEM",
+        "dep": "2:00 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "1129"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "163"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "164"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "165"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "166"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "AC SEATER SLEEPER",
+        "_id": "387"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "388"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "389"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:55 am",
+        "corporation": "SETC",
+        "type": "AC SEATER SLEEPER",
+        "_id": "519"
+    },
+    {
+        "from": "TRICHY",
+        "to": "TIRUNELVELI",
+        "dep": "12:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "520"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "12:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "151"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "AC SEATER SLEEPER",
+        "_id": "365"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "366"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "367"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "12:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "509"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "1:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "708"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "1:25 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "797"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "1:40 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "950"
+    },
+    {
+        "from": "TRICHY",
+        "to": "NAGERCOIL",
+        "dep": "1:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "1060"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "55"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "56"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "222"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "12:53 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "478"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "619"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "1:45 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "987"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "2:05 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "1135"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "2:10 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "1159"
+    },
+    {
+        "from": "TRICHY",
+        "to": "ERODE",
+        "dep": "3:40 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "1796"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "395"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "12:40 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "396"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "1:00 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "597"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "1:25 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "810"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "1:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "1076"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "4:00 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "1927"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "5:00 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "2241"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "6:30 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "2763"
+    },
+    {
+        "from": "TRICHY",
+        "to": "VELLORE",
+        "dep": "7:30 am",
+        "corporation": "TNSTC",
+        "type": "3 X 2",
+        "_id": "3077"
+    },
+    {
+        "from": "TRICHY",
+        "to": "KANYAKUMARI",
+        "dep": "12:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "503"
+    },
+    {
+        "from": "TRICHY",
+        "to": "KANYAKUMARI",
+        "dep": "1:11 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "705"
+    },
+    {
+        "from": "TRICHY",
+        "to": "KANYAKUMARI",
+        "dep": "1:55 am",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "1050"
+    },
+    {
+        "from": "TRICHY",
+        "to": "KANYAKUMARI",
+        "dep": "2:40 am",
+        "corporation": "SETC",
+        "type": "NON AC SEATER SLEEPER",
+        "_id": "1363"
+    },
+    {
+        "from": "TRICHY",
+        "to": "KANYAKUMARI",
+        "dep": "9:25 pm",
+        "corporation": "SETC",
+        "type": "ULTRA DELUXE",
+        "_id": "9445"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "10737"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "10738"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "182"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "12:33 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "312"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "414"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "1:20 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "762"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "1:40 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "922"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "2:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1112"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Trichy",
+        "dep": "3:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1529"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "ChinnaSalem",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "10745"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "salem",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "10747"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "ChinnaSalem",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "279"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "salem",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "285"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "ChinnaSalem",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "447"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "salem",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "450"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "ChinnaSalem",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "712"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "salem",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "717"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "ChinnaSalem",
+        "dep": "1:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "818"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "1:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "554"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "1:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "823"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "2:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1294"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "3:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1522"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "4:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1903"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "4:15 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "1980"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "4:30 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "2054"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "5:00 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "2199"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "kumbakonam",
+        "dep": "5:15 am",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "2278"
+    },
+    {
+        "from": "Chennai Kilambakkam KCBT",
+        "to": "Erode",
+        "dep": "8:30 pm",
+        "corporation": "TNSTC",
+        "type": "MOFFUSIL BUS",
+        "_id": "9079"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144015"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145745"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150704"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152211"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "1:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "10888"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12022"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "1:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12655"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "1:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "14880"
+    },
+    {
+        "from": "MADURAI",
+        "to": "TRICHY",
+        "dep": "1:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "15511"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "COIMBATORE",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "143933"
+    },
+    {
+        "from": "MADURAI",
+        "to": "COIMBATORE",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144003"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "COIMBATORE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145003"
+    },
+    {
+        "from": "MADURAI",
+        "to": "COIMBATORE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145063"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "COIMBATORE",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145668"
+    },
+    {
+        "from": "MADURAI",
+        "to": "COIMBATORE",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145732"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "COIMBATORE",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146500"
+    },
+    {
+        "from": "MADURAI",
+        "to": "COIMBATORE",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146608"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "COIMBATORE",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147438"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "SALEM",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "143942"
+    },
+    {
+        "from": "MADURAI",
+        "to": "SALEM",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144012"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "SALEM",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146505"
+    },
+    {
+        "from": "MADURAI",
+        "to": "SALEM",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146620"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "SALEM",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147447"
+    },
+    {
+        "from": "MADURAI",
+        "to": "SALEM",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147506"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "SALEM",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148978"
+    },
+    {
+        "from": "MADURAI",
+        "to": "SALEM",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "149092"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "SALEM",
+        "dep": "12:35 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "150041"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145070"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145741"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146621"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "149095"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150701"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152207"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "12:53 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152898"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12019"
+    },
+    {
+        "from": "MADURAI",
+        "to": "THANJAVUR",
+        "dep": "1:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "14170"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147499"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147500"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147501"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148344"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148345"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148346"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150694"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150695"
+    },
+    {
+        "from": "MADURAI",
+        "to": "NAGERCOIL",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150696"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "ERODE",
+        "dep": "12:01 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144852"
+    },
+    {
+        "from": "MADURAI",
+        "to": "ERODE",
+        "dep": "12:01 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144857"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "ERODE",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148970"
+    },
+    {
+        "from": "MADURAI",
+        "to": "ERODE",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "149081"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "ERODE",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "151408"
+    },
+    {
+        "from": "MADURAI",
+        "to": "ERODE",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "151461"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "ERODE",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152140"
+    },
+    {
+        "from": "MADURAI",
+        "to": "ERODE",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152192"
+    },
+    {
+        "from": "ARAPALAYAM (MADURAI)",
+        "to": "ERODE",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "11965"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152194"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "2:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "21011"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "2:55 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "28479"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "6:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "67547"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "8:35 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "100825"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "9:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "108033"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "9:55 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "119772"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "10:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "125464"
+    },
+    {
+        "from": "MADURAI",
+        "to": "KANYAKUMARI",
+        "dep": "11:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "137289"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "23"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "143959"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145686"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146518"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13344"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "1:35 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "16511"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "1:55 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "19415"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "2:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "22396"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TRICHY",
+        "dep": "2:15 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "22397"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145688"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MANAMADURAI",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148303"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MANAMADURAI",
+        "dep": "6:56 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "76404"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "7:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "79287"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "7:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "79288"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MANAMADURAI",
+        "dep": "8:28 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "98872"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "8:47 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "103999"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "8:55 am",
+        "corporation": "TNSTC",
+        "type": "SD",
+        "_id": "105418"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "MADURAI",
+        "dep": "8:55 am",
+        "corporation": "TNSTC",
+        "type": "SD",
+        "_id": "105419"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "6:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "67434"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "10:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "131605"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "12:10 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145918"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "7:30 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "84909"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "7:50 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "89828"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "9:20 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "111843"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUNELVELI",
+        "dep": "10:10 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "123570"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "6:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "64011"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "8:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "91430"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "8:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "101708"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "9:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "113564"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "11:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "141597"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "12:25 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148464"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "2:25 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "24099"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "6:25 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "69020"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "THANJAVUR",
+        "dep": "7:45 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "88571"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "NAGERCOIL",
+        "dep": "12:10 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145916"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "NAGERCOIL",
+        "dep": "7:50 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "89826"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "NAGERCOIL",
+        "dep": "10:10 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "123565"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "6:55 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "75771"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "9:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "117366"
+    },
+    {
+        "from": "COIMBATORE",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "9:50 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "119137"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145793"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147531"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "149160"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:35 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150126"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:42 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "151299"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152254"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "1:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "10962"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "1:13 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13267"
+    },
+    {
+        "from": "SALEM",
+        "to": "TRICHY",
+        "dep": "1:24 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "14817"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145788"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 6",
+        "_id": "149151"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "12:52 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152852"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "1:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12677"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13424"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "1:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "14202"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "1:35 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "16587"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "1:52 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "19316"
+    },
+    {
+        "from": "SALEM",
+        "to": "CHENNAI",
+        "dep": "2:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "20065"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144047"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "145099"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145789"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:15 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "146673"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147528"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148366"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "149152"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "149153"
+    },
+    {
+        "from": "SALEM",
+        "to": "COIMBATORE",
+        "dep": "12:35 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 1",
+        "_id": "150123"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUNELVELI",
+        "dep": "4:45 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "47167"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "4:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "45717"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "6:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "72451"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "7:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "89608"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "8:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "95695"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "9:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "109160"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "10:33 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "128557"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "11:02 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "134390"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "11:59 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "143905"
+    },
+    {
+        "from": "SALEM",
+        "to": "THANJAVUR",
+        "dep": "1:05 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12341"
+    },
+    {
+        "from": "SALEM",
+        "to": "NAGERCOIL",
+        "dep": "4:45 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "47165"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "2:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "23228"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "6:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "70022"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "11:02 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "134387"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "11:59 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "143902"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "8:30 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "100166"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "10:15 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "124854"
+    },
+    {
+        "from": "SALEM",
+        "to": "KUMBAKONAM",
+        "dep": "11:30 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "139760"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144048"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152250"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12679"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:12 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13213"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:22 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "14748"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "15561"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "17230"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "1:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "18714"
+    },
+    {
+        "from": "SALEM",
+        "to": "ERODE",
+        "dep": "2:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "20068"
+    },
+    {
+        "from": "SALEM",
+        "to": "VELLORE",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "151510"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "12:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152253"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13430"
+    },
+    {
+        "from": "SALEM",
+        "to": "VELLORE",
+        "dep": "1:35 am",
+        "corporation": "TNSTC",
+        "type": "1 TO 6",
+        "_id": "16590"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "2:01 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "20849"
+    },
+    {
+        "from": "SALEM",
+        "to": "VELLORE",
+        "dep": "2:20 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "23233"
+    },
+    {
+        "from": "SALEM",
+        "to": "VELLORE",
+        "dep": "2:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "26147"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "2:50 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "27759"
+    },
+    {
+        "from": "SALEM",
+        "to": "TIRUPATTUR (VELLORE)",
+        "dep": "3:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "31489"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "7:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "88427"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "9:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "108249"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "9:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "117731"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "12:35 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150482"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "8:00 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "92767"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "8:50 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "105133"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "TRICHY",
+        "dep": "9:20 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "112192"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144088"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Point TO Point",
+        "_id": "144089"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145115"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "12:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150753"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "1:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "10991"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "2:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "21683"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "2:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "26175"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "3:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "30739"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "MADURAI",
+        "dep": "3:30 am",
+        "corporation": "TNSTC",
+        "type": "Point TO Point",
+        "_id": "33815"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "SALEM",
+        "dep": "8:15 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "96393"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "THANJAVUR",
+        "dep": "10:40 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "129958"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "THANJAVUR",
+        "dep": "11:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "138451"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "THANJAVUR",
+        "dep": "10:14 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "124026"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "THANJAVUR",
+        "dep": "11:30 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "139842"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "6:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "62872"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "6:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "70178"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "7:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "77214"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "7:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "80818"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "7:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "84726"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "7:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "88423"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "8:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "91982"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "8:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "95809"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "NAGERCOIL",
+        "dep": "8:30 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "99550"
+    },
+    {
+        "from": "TIRUNELVELI NBS",
+        "to": "ERODE",
+        "dep": "7:20 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "82627"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "PRIVATE",
+        "type": "Private Bus",
+        "_id": "144074"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144075"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144076"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:06 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145548"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:10 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145811"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:12 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146408"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:14 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "146478"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:16 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147282"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "TRICHY",
+        "dep": "12:18 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "147387"
+    },
+    {
+        "from": "THANJAVUR OLD BS",
+        "to": "CHENNAI",
+        "dep": "8:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "91880"
+    },
+    {
+        "from": "THANJAVUR OLD BS",
+        "to": "CHENNAI",
+        "dep": "11:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "138376"
+    },
+    {
+        "from": "THANJAVUR OLD BS",
+        "to": "CHENNAI",
+        "dep": "9:15 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "110900"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "CHENNAI",
+        "dep": "10:40 pm",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "130248"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:00 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "144061"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "145109"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:25 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "148377"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:35 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "150131"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:45 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "151517"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "12:55 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "152994"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "1:05 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12051"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "1:07 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "12500"
+    },
+    {
+        "from": "THANJAVUR NEW BS",
+        "to": "MADURAI",
+        "dep": "1:15 am",
+        "corporation": "TNSTC",
+        "type": "Moffusil Bus",
+        "_id": "13443"
+    }
+]

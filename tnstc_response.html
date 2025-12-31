@@ -1,0 +1,3373 @@
+<!-- Release Version 31032023-1800-->
+
+
+ 
+ 
+
+
+
+
+
+
+
+<html> 
+<head>
+<!-- BackButton Restricting -->
+<script>
+javascript: window.history.forward(1);
+    </script>
+<!-- BackButton Restricting --> 
+<script>
+window.setInterval(refresh, 600000); // 600,000 milliseconds = 10 minutes
+    function refresh() {
+        var sessionData='null';
+     // Check if sessionData is the string 'null'
+        if (sessionData === 'null') {
+            sessionData = null;
+        }
+        //alert(sessionData);
+        if(sessionData!=null){
+        	//alert("IN SESSION");//// Session is active
+        	alert("Sorry !!! Your session has expired.");
+        	signOut();
+        }else{
+        	//alert("OUT SESSION");//Session is expired or not set
+        	alert("Sorry !!! Your session has expired.");
+            window.location.replace("https://www.tnstc.in/OTRSOnline/");
+        }
+    	
+    }
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="newSite/images/favicon.ico" rel="icon" />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900' type='text/css'>
+<title>TNSTC</title>
+<!-- Web Fonts
+============================================= -->
+<!-- Stylesheet
+============================================= -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="newSite/vendor/bootstrap/css/bootstrap.min.css" /> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="newSite/vendor/font-awesome/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="newSite/vendor/owl.carousel/assets/owl.carousel.min.css" />
+<link rel="stylesheet" type="text/css" href="newSite/vendor/owl.carousel/assets/owl.theme.default.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="newSite/vendor/jquery-ui/jquery-ui.css" />TAKING TIME-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<!-- <link rel="stylesheet" type="text/css" href="newSite/vendor/jquery-seat-charts/jquery.seat-charts.css" /> -->
+<link rel="stylesheet" type="text/css" href="newSite/css/stylesheet.css" />
+
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+  .fas {
+    font-size: 1.2em; /* Adjust this value to make the arrows larger or smaller */
+  }
+
+.buttonVS {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #cc3300;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px 20px;    
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.container-fluid2 {
+    width: 100%;
+    padding-right: 15px;
+   
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.custom-col-01{
+ width: 80px;
+}
+.custom-col-02{
+ width: 30px;
+}
+.custom-col-03{
+ width: 30px;
+}
+.custom-col-04{
+ width: 30px;
+}
+
+
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #4677af;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 60px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.button:focus {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #28a745;
+    border: none;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 60px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+    box-shadow: 0px 5px 15px rgb(0 0 0 / 15%);
+}
+
+.buttonF {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #acaf9d;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 60px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+}
+
+/* Tripcode pop styles */
+.bodytextWithSecondMainColor {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    background-color: #cfe3f9;
+    text-decoration: none;
+}
+.bodytextWithThirdMainColor {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    color: #black;
+    background-color: #e3edf7;
+    text-decoration: none;
+}
+.listHeading {
+    COLOR: #FFFFFF;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    font-style: normal;
+    text-decoration: none;
+    background-color: #0071cc;
+    border: 1px solid #0071cc;
+    height: 8px
+px
+;
+}
+.modal- {
+    
+	
+}
+
+</style>
+<script type="text/javascript">
+function showLayOut(servID,slNo,noOfSeats){
+	//alert("showLayOut");
+	$(".seatLayout").hide();
+	var divID = "#dvLoadStatusTR"+slNo;
+	url="./advanceNewBooking.do?hiddenAction=SubmitToGetOnwardSeatLayout&radOnwardServiceID="+servID+"&slNo="+slNo;
+	document.forms[0].hiddenOnwardServiceInfo.value =servID;
+	// var button = document.getElementById('layoutButton'+slNo);
+     // Change button content to spinner
+   //  button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+     // Disable button to prevent multiple clicks
+  //   button.disabled = true;
+	//alert(document.forms[0].hiddenOnwardServiceInfo.value);
+	$.ajax({
+		url: url,
+		type: 'POST',
+		beforeSend: function( xhr ) {
+		showLoadingStatusDiv(slNo);
+		},
+		success: function (data) { 
+		$(divID).html(data);
+		showLoadingStatusDiv(slNo);
+		if('null' != "null"){
+			document.getElementById("trSeatBlockMessage1").style.display = "none";
+			document.getElementById("trSeatBlockMessage2").style.display = "none";
+			document.getElementById("trSeatBlockMessage3").style.display = "none";
+		}
+		if('null' != "null"){
+			document.getElementById("trSeatBlockMessage1").style.display = "none";
+			document.getElementById("trSeatBlockMessage2").style.display = "none";
+			document.getElementById("trSeatBlockMessage3").style.display = "none";
+		}
+		}
+		});
+			
+	return;
+}
+function showLoadingStatusDiv(slNo){
+ 	var divIDTr = "dvLoadStatusTR"+slNo; 
+	document.getElementById(divIDTr).style.display = "";
+}
+function selectSeat(details){
+  // alert("ENTER selectSeat");
+	var count=document.forms[0].hiddenCount.value;
+	// alert("count:"+count);
+	var counterlength = document.forms[0].chkSelectedList.length;
+	// alert("counterlength:"+counterlength);
+	var numberOfSeatsChecked = 0;
+	var isCounterTypeChecked = false;
+	for (var index = 0; index < counterlength; index++) {	
+		if(document.forms[0].chkSelectedList[index].checked == true) {
+			//alert("UUUU:"+document.forms[0].chkSelectedList[index].checked);
+			isCounterTypeChecked = true;
+			numberOfSeatsChecked = numberOfSeatsChecked+1;
+		}
+	}
+	if(numberOfSeatsChecked>parseInt(document.forms[0].totalSeatsTodisplay.value)){
+		alert("Sorry !! Invalid Seat selection: You Should select "+document.forms[0].totalSeatsTodisplay.value+" no. of Seat/s,Please reselect once again.");
+		document.forms[0].chkSelectedList.value="";
+    	window.location.reload();
+	}else{
+	var counterlength = document.forms[0].chkSelectedList.length;
+	var numberOfSeatsChecked = 0;
+	var isCounterTypeChecked = false;
+    var sid=details.value;
+   //alert("Details:"+sid);
+    var Details1 = sid.split('#');
+    var sid=Details1[0];
+    var newSeatNo = Details1[1];
+  // alert("Details[0]:"+Details1[0]+":Details[1]:"+Details1[1]);
+    //
+  /* const breatSeats=[];
+  const Seats=[]; */
+    var oldSeatNoWithDesc=Details1[0];
+    alert(oldSeatNoWithDesc);
+    var oldSeatNoWithDesc1=oldSeatNoWithDesc.split('-');
+    var oldSeatNoDesc=oldSeatNoWithDesc1[1];
+    var sidN=newSeatNo+"-"+oldSeatNoDesc;
+  	//alert("NewSeatNoDesc:"+sidN);
+    var seatNoWithServID = sid.split('-');//OLD
+    var seatNoWithServIDN = sidN.split('-');//NEW
+    alert(seatNoWithServID[1]);
+	sid = details.value;//OLD
+	sidN = sidN;//NEW
+	//alert("sid:"+sid+":sidN:"+sidN);
+	var seatNumbersTodisplay = document.forms[0].seatNumbersTodisplay.value ;//OLD
+	var seatNumbersTodisplayN = document.forms[0].seatNumbersTodisplayN.value ;//NEW
+	//alert("seatNumbersTodisplay:"+seatNumbersTodisplay+":seatNumbersTodisplayN:"+seatNumbersTodisplayN);
+	//alert("seatNumbersTodisplay:"+seatNumbersTodisplay);
+	if(seatNumbersTodisplay==""){
+			//alert("AAAAA 2222222");
+			splstr = sid;
+			seatNumbersTodisplay=splstr;
+			alert(":seatNumbersTodisplay[0]:"+seatNumbersTodisplay)
+			document.forms[0].hiddenCount.value =1;
+		}else{
+			//alert("AAAAA 3333333");
+			document.forms[0].hiddenCount.value=parseInt(count)+1;
+			alert("Count::"+document.forms[0].hiddenCount.value+"TOTAL SEATS:"+document.forms[0].totalSeatsTodisplay.value);
+            if(parseInt(document.forms[0].hiddenCount.value)<=parseInt(document.forms[0].totalSeatsTodisplay.value)){		
+				splstr = sid;
+				seatNumbersTodisplay=seatNumbersTodisplay+"~"+splstr;
+				alert("Count BBB:"+document.forms[0].hiddenCount.value);
+            } else{
+            	alert("Sorry !! Invalid Seat selection: You Should select "+document.forms[0].totalSeatsTodisplay.value+" no. of Seat/s");
+            	window.location.reload();
+            	return false;
+                }
+		}
+	if(seatNumbersTodisplayN==""){
+		alert("AAAAA 2222222");
+		splstrN = sidN;
+		seatNumbersTodisplayN=splstrN;
+		alert(":seatNumbersTodisplay[0]:"+seatNumbersTodisplay)
+	}else{
+		alert("AAAAA 3333333");
+		splstrN = sidN;
+		seatNumbersTodisplayN=seatNumbersTodisplayN+"~"+splstrN;
+		alert(":seatNumbersTodisplay[1] AAAAA 444444:"+seatNumbersTodisplay)
+	}
+	var noOfSeats=seatNumbersTodisplay.split('~').length;//OLD
+	var noOfSeatsN=seatNumbersTodisplayN.split('~').length;//NEW
+	//
+    var fields = seatNumbersTodisplay.split('~');//OLD
+    var fieldsN = seatNumbersTodisplayN.split('~');//NEW
+    reassignmentofseats(details);
+	}	
+}
+function reassignmentofseats(details){
+	alert("reassignmentofseats:"+details);
+	//SINGLE SEAT
+	if (counterlength == null && document.forms[0].chkSelectedList.checked == true) {
+		alert("SINGLE SEAT ISSUE");
+		//MORE THAN MORE SEATS
+		var counterlength = 1;
+		var numberOfSeatsChecked = 0;
+		var isCounterTypeChecked = false;
+		var i=0;
+		var j=0;
+		var K=0;
+		const breatSeats=[];
+		const breatSeats1=[];
+		const Seats=[];
+		const Seats1=[];
+		var totalseats=0;
+		for (var index = 0; index < counterlength; index++) {	
+			//if(document.forms[0].chkSelectedList[index].checked == true) {
+				 var detailsNew=details.value;
+				totalseats++;
+				alert("UUUU:"+document.forms[0].chkSelectedList[index].checked+document.forms[0].chkSelectedList[index].value);
+				alert(((document.forms[0].chkSelectedList[index].value).split("#",1)));
+				var A=(detailsNew).split("#",1);
+				alert(A);
+				myString = new String(A);
+				alert(myString);
+				alert(myString.substring(myString.length - 1));
+				var B=myString.substring(myString.length - 1);
+				if(B=="A"||B=="W"||B=="w")
+					{
+					alert("inside if condition");
+					Seats[i]=(detailsNew).split("#",1);
+					Seats1[i]=detailsNew;
+					alert(Seats[i]);
+					i++;
+					}
+				else{
+					alert("inside else condition")
+					//breatSeats[j]=(detailsNew).split("#",1);
+					 var Details2 = detailsNew.split('#');
+					    var sid=Details2[0];
+					    var newSeatNo = Details2[1];
+					    var oldSeatNoWithDesc1=sid.split('-');
+					    var oldSeatNoDesc=oldSeatNoWithDesc1[1];
+					    var sidN=newSeatNo+"-"+oldSeatNoDesc; 
+					    breatSeats1[j]=detailsNew;
+					    breatSeats[j]=sidN;
+					j++;
+					}
+			//}
+		}
+		K=1;
+		var adultbearthcount=0;
+		var childBearthcount=0;
+		var adultseatcount=0;
+		var childseatcount=0;
+		var seatNumbersTodisplay;
+		for (var index = 0; index <  breatSeats.length; index++) {
+			document.getElementById("selectedSeatNo"+(K)+"").textContent =breatSeats[index];
+		    if(K==1){
+			    seatNumbersTodisplay=breatSeats1[index];
+			   }else{
+				   seatNumbersTodisplay=seatNumbersTodisplay+"~"+breatSeats1[index];
+				   } 
+			K++;
+		}
+		for (var index = 0; index <  Seats.length; index++) {
+			document.getElementById("selectedSeatNo"+(K)+"").textContent =Seats[index];
+			 if(K==1){
+				   seatNumbersTodisplay=Seats1[index];
+				   }else{
+					   seatNumbersTodisplay=seatNumbersTodisplay+"~"+Seats1[index];
+					   } 
+			K++;
+		}
+		
+		document.forms[0].seatNumbersTodisplay.value = seatNumbersTodisplay;
+		document.forms[0].chkSelectedList.value=seatNumbersTodisplay;
+		document.forms[0].seatNumbersTodisplay.value = seatNumbersTodisplay;
+		document.forms[0].hiddenSeatNumbersTodisplay.value = seatNumbersTodisplay;
+
+		alert("111:seatNumbersTodisplay:"+document.forms[0].seatNumbersTodisplay.value);
+		alert("111:chkSelectedList:"+document.forms[0].chkSelectedList.value);
+		alert("111:seatNumbersTodisplay:"+document.forms[0].seatNumbersTodisplay.value);
+		alert("111:hiddenSeatNumbersTodisplay:"+document.forms[0].hiddenSeatNumbersTodisplay.value);
+	}else{
+		alert("MORE SEATS NO ISSUE");
+	//MORE THAN MORE SEATS
+	var counterlength = document.forms[0].chkSelectedList.length;
+	alert("counterlength"+document.forms[0].chkSelectedList.length);
+	var numberOfSeatsChecked = 0;
+	var isCounterTypeChecked = false;
+	var i=0;
+	var j=0;
+	var K=0;
+	const breatSeats=[];
+	const breatSeats1=[];
+	const Seats=[];
+	const Seats1=[];
+	var totalseats=0;
+	var counterlength = 1;
+	for (var index = 0; index < counterlength; index++) {	
+		if(document.forms[0].chkSelectedList[index].checked == true) {
+			totalseats++;
+			alert("UUUU:"+document.forms[0].chkSelectedList[index].checked+document.forms[0].chkSelectedList[index].value);
+			alert(((document.forms[0].chkSelectedList[index].value).split("#",1)));
+			var A=(document.forms[0].chkSelectedList[index].value).split("#",1);
+			alert(A);
+			myString = new String(A);
+			alert(myString);
+			alert(myString.substring(myString.length - 1));
+			var B=myString.substring(myString.length - 1);
+			if(B=="A"||B=="W"||B=="w")
+				{
+				alert("inside if condition");
+				Seats[i]=(document.forms[0].chkSelectedList[index].value).split("#",1);
+				Seats1[i]=document.forms[0].chkSelectedList[index].value;
+				alert(Seats[i]);
+				i++;
+				}
+			else{
+				alert("inside else condition")
+				//breatSeats[j]=(document.forms[0].chkSelectedList[index].value).split("#",1);
+				 var Details2 = document.forms[0].chkSelectedList[index].value.split('#');
+				    var sid=Details2[0];
+				    var newSeatNo = Details2[1];
+				    var oldSeatNoWithDesc1=sid.split('-');
+				    var oldSeatNoDesc=oldSeatNoWithDesc1[1];
+				    var sidN=newSeatNo+"-"+oldSeatNoDesc; 
+				    breatSeats1[j]=document.forms[0].chkSelectedList[index].value;
+				    breatSeats[j]=sidN;
+				j++;
+				}
+		}
+	}
+	K=1;
+	var adultbearthcount=0;
+	var childBearthcount=0;
+	var adultseatcount=0;
+	var childseatcount=0;
+	var seatNumbersTodisplay;
+	for (var index = 0; index <  breatSeats.length; index++) {
+		document.getElementById("selectedSeatNo"+(K)+"").textContent =breatSeats[index];
+	    if(K==1){
+		    seatNumbersTodisplay=breatSeats1[index];
+		   }else{
+			   seatNumbersTodisplay=seatNumbersTodisplay+"~"+breatSeats1[index];
+			   } 
+		K++;
+	}
+	for (var index = 0; index <  Seats.length; index++) {
+		document.getElementById("selectedSeatNo"+(K)+"").textContent =Seats[index];
+		 if(K==1){
+			   seatNumbersTodisplay=Seats1[index];
+			   }else{
+				   seatNumbersTodisplay=seatNumbersTodisplay+"~"+Seats1[index];
+				   } 
+		K++;
+	}
+
+	document.forms[0].seatNumbersTodisplay.value = seatNumbersTodisplay;
+	document.forms[0].chkSelectedList.value=seatNumbersTodisplay;
+	document.forms[0].seatNumbersTodisplay.value = seatNumbersTodisplay;
+	document.forms[0].hiddenSeatNumbersTodisplay.value = seatNumbersTodisplay;
+	alert("222:seatNumbersTodisplay:"+document.forms[0].seatNumbersTodisplay.value);
+	alert("222:chkSelectedList:"+document.forms[0].chkSelectedList.value);
+	alert("222:seatNumbersTodisplay:"+document.forms[0].seatNumbersTodisplay.value);
+	alert("222:hiddenSeatNumbersTodisplay:"+document.forms[0].hiddenSeatNumbersTodisplay.value);
+	}//MORE SEATS CLOSE 
+}
+
+
+</script>
+
+<script type="text/javascript">
+//MODIFY SEARCH
+//$.noConflict();
+	var fromPlaceID="";
+	var toPlaceID="";
+	var fromPlaceCode="";
+	var toPlaceCode="";
+	var doj="";
+	var selectedFromPlace= "";
+	var selectedToPlace= "";
+	var domainUrl = document.URL;
+	//finalDomain = "https://"+fnGetDomain(domainUrl);
+	var protocol = window.location.protocol;
+	// Construct the final domain using the dynamic protocol
+	var finalDomain = protocol + "//" + fnGetDomain(domainUrl);
+	var applicationURL = finalDomain+"/OTRSOnline/jqreq.do?";
+function fnGetDomain(url){
+  		return url.match(/:\/\/(.[^/]+)/)[1];
+	}//End of 'function fnGetDomain(url){'
+function loadClassList(fromPlaceID,toPlaceID){
+        //ClearOptions();
+		if(document.getElementById("matchStartPlace").value == "" || document.getElementById("matchEndPlace").value == ""){
+      }else{
+           var action="GetClass";
+          doj= document.getElementById("txtdeptDateOtrip").value;
+		//alert("Hello:"+doj);	
+          $.ajax({
+				type:"POST",
+         		url: applicationURL,
+         		data:"hiddenAction=GetClass&Sid="+fromPlaceID+"&Eid="+toPlaceID+"&Doj="+doj,
+         		cache: false,
+            	success:function(response){
+              var s=response.split("^");      
+              var  select=document.getElementById("selectClass");
+              for(indx=0;indx<s.length-1;indx++){
+                 var s2=s[indx].split(':');
+                 var optn = document.createElement("OPTION");
+                 optn.text = s2[1];
+                 optn.value = s2[0];
+                 select.options.add(optn);     
+             } //End of For Loop
+		    } // End of 'Success()'	
+}); //End of 'jquery_auto.ajax({'
+}// else End
+} //End of 'function loadClassList(){'
+function clearAutoCompleteFromPlace() {
+  $("#matchStartPlace").val('');
+}
+function clearAutoCompleteToPlace() {
+	     $("#matchEndPlace").val('');
+}
+$(function() {
+    var fromPlacesListID = {};
+    var fromPlaceListCode = {};
+
+    $("#matchStartPlace").autocomplete({
+        autoFocus: true,
+        minLength: 3,
+        delay: 50,
+        source: function(request, response) { 
+            $.ajax({
+                type: "POST",
+                url: applicationURL,
+                data: "hiddenAction=LoadFromPlaceList&matchStartPlace=" + request.term,
+                error: function(xhr, textStatus, errorThrown) {
+                    alert('request failed');
+                },
+                success: function(data) { 
+                    if (data.length == 0) {
+                        fromPlaceID = null;
+                        fromPlaceCode = null;
+                    } else {
+                        var fromPlacesNamesList = [];
+                        fromPlacesListID = {};
+                        fromPlaceListCode = {};
+                        var f = data.split("^"); 
+                        for (var indx = 0; indx < f.length - 1; indx++) {
+                            var f1 = f[indx].split(':');
+                            fromPlacesNamesList[indx] = f1[2]; 
+                            fromPlacesListID[f1[2]] = f1[0];   
+                            fromPlaceListCode[f1[2]] = f1[1];
+                        }
+                        response(fromPlacesNamesList);
+                    }
+                }
+            });
+        }, 
+        select: function(event, ui) {
+            fromPlaceID = fromPlacesListID[ui.item.value];
+            fromPlaceCode = fromPlaceListCode[ui.item.value];
+            setTimeout(function() {
+                document.getElementById('matchEndPlace').focus();
+            }, 10);
+        },
+        change: function(event, ui) {
+            if (!ui.item) {
+                fromPlaceID = null;
+                fromPlaceCode = null;
+            }
+        }
+    });
+
+    var toPlacesListID = {};
+    var toPlacesListCode = {};
+
+    $("#matchEndPlace").autocomplete({
+        autoFocus: true,
+        minLength: 3,
+        delay: 50,
+        source: function(request, response) { 
+            $.ajax({
+                type: "POST",
+                url: applicationURL,
+                data: "hiddenAction=LoadTOPlaceList&matchEndPlace=" + request.term,
+                success: function(data) { 
+                    if (data.length == 0) {
+                        toPlaceID = null;
+                        toPlaceCode = null;
+                    } else {
+                        var toPlacesNamesList = [];
+                        toPlacesListID = {};
+                        toPlacesListCode = {};
+                        var t = data.split("^"); 
+                        for (var indx = 0; indx < t.length - 1; indx++) {
+                            var t1 = t[indx].split(':');
+                            toPlacesNamesList[indx] = t1[2];  // t1[2] = PlaceNames, t1[0] = PlaceID, t1[1] = PlaceCode
+                            toPlacesListID[t1[2]] = t1[0]; 
+                            toPlacesListCode[t1[2]] = t1[1];  
+                        }
+                        response(toPlacesNamesList); 
+                    }
+                }
+            }); 
+        },
+        select: function(event, ui) {
+            toPlaceID = toPlacesListID[ui.item.value];
+            toPlaceCode = toPlacesListCode[ui.item.value];
+            setTimeout(function() {
+                document.getElementById('txtdeptDateOtrip').focus();
+            }, 10);
+        },
+        change: function(event, ui) {
+            if (!ui.item) {
+                toPlaceID = null;
+                toPlaceCode = null;
+            }
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+$(function() {
+    $("#txtdeptDateRtrip").datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        minDate: 'today',
+        maxDate: '+90D',
+        onSelect: function(dateText, inst) {
+            $(this).datepicker('hide');
+        }
+    });
+});
+$( function() {
+    $( "#txtdeptDateOtrip" ).datepicker({
+    	dateFormat: 'dd/mm/yy',
+    	changeMonth:'true',
+    	minDate: 'today',
+    	maxDate: '+90D'
+    });
+  } );
+$( function() {
+    $( "#txtdeptDatePtrip" ).datepicker({
+    	dateFormat: 'dd/mm/yy',
+    	changeMonth:'true',
+    	minDate: 'today',
+    	maxDate: '+90D'
+    });
+  } );
+</script>
+<script type="text/javascript">
+function setSearchAction(actionName) {
+    //alert("Hello Modify Search");
+	// Get the form element by its id
+    var form = document.getElementById('searchForm');
+    document.forms[0].hiddenAction.value = actionName;
+	document.forms[0].hiddenMaxNoOfPassengers.value="16";
+	var matchStartPlace = document.getElementById('matchStartPlace').value;
+	var matchEndPlace = document.getElementById('matchEndPlace').value;
+	var onwardDate = document.getElementById('txtdeptDateOtrip').value;
+    var returnDate=  document.getElementById('txtdeptDateRtrip').value;
+    
+    //alert("matchStartPlace:"+matchStartPlace+":matchEndPlace:"+matchEndPlace+":onwardDate:"+onwardDate+":returnDate:"+returnDate);
+    
+	if(trim(matchStartPlace).length == 0){
+        alert("'From' place is required.");
+        setTimeout('document.forms[0].matchStartPlace.focus()', 10 );  
+        return;      
+    }else if(trim(matchEndPlace).length == 0){
+        alert("'To' place is required.");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }else if(trim(matchStartPlace) == trim(matchEndPlace)){
+        alert("From Place and To Place should not be the same");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }else if(trim(document.forms[0].selectStartPlace.value) == "" || trim(document.forms[0].selectStartPlace.value)==null ||trim(document.forms[0].selectStartPlace.value)=="null" ){
+        alert("Invalid From Place");
+        setTimeout('document.forms[0].matchStartPlace.focus()', 10 );
+        return;        
+    }else if(trim(document.forms[0].selectEndPlace.value) == "" || trim(document.forms[0].selectEndPlace.value)==null || trim(document.forms[0].selectEndPlace.value)=="null"){
+        alert("Invalid To Place");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }
+	var chkAddOnCheckbox = document.getElementById('chkSingleLadyCheckbox');
+	// Check if the checkbox is checked
+	if (chkAddOnCheckbox.checked) {
+		document.forms[0].checkSingleLady.value ="Y";
+	} else {
+		document.forms[0].checkSingleLady.value ="N";
+	}
+	//alert("Hello:"+document.forms[0].checkSingleLady.value);
+	//alert("Hello:"+document.forms[0].checkSingleLady.value);
+	url = applicationURL+"hiddenAction=SearchService";
+	document.forms[0].hiddenStartPlaceID.value=fromPlaceID;
+	//document.forms[0].action = "http://localhost:8082/OTRSOnline/jqreq.do?hiddenAction=SearchService";//LOC
+	  document.forms[0].action = "https://www.tnstc.in/OTRSOnline/jqreq.do?hiddenAction=SearchService";//PRD
+    document.forms[0].hiddenEndPlaceID.value=toPlaceID;
+    document.forms[0].txtStartPlaceCode.value = fromPlaceCode;
+    document.forms[0].txtEndPlaceCode.value = toPlaceCode;
+    document.forms[0].hiddenStartPlaceName.value =matchStartPlace;
+   // alert("hiddenStartPlaceName:"+document.forms[0].hiddenStartPlaceName.value);
+    document.forms[0].hiddenEndPlaceName.value =matchEndPlace;
+   // alert("hiddenEndPlaceName:"+document.forms[0].hiddenEndPlaceName.value);
+	document.forms[0].hiddenOnwardJourneyDate.value = onwardDate;
+	// alert("hiddenOnwardJourneyDate:"+document.forms[0].hiddenOnwardJourneyDate.value);
+	if(trim(returnDate) == ""){
+		document.forms[0].hiddenReturnJourneyDate.value = "DD/MM/YYYY";
+	}else{
+		document.forms[0].hiddenReturnJourneyDate.value = returnDate;
+	}
+	// alert("hiddenReturnJourneyDate:"+document.forms[0].hiddenReturnJourneyDate.value);
+	document.forms[0].languageType.value = "E";
+//	alert("ALL WELL");
+	 var button = document.getElementById('searchButton');
+    // Change button content to spinner
+    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Search...';
+    // Disable button to prevent multiple clicks
+    button.disabled = true;
+	
+	
+	document.forms[0].submit();
+}
+
+function setSearchActionOld(actionName){
+	document.forms[0].hiddenAction.value = actionName;
+	document.forms[0].hiddenMaxNoOfPassengers.value="16";
+	document.forms[0].selectStartPlace.value= fromPlaceCode; 
+	document.forms[0].selectEndPlace.value= toPlaceCode; 	
+	document.forms[0].matchStartPlace.value = document.getElementById('matchStartPlace').value;
+	document.forms[0].matchEndPlace.value = document.getElementById('matchEndPlace').value;
+	alert(document.forms[0].matchStartPlace.value);
+    var returnDate=returnDate.value;
+	if(trim(document.forms[0].matchStartPlace.value).length == 0){
+        alert("'From' place is required.");
+        setTimeout('document.forms[0].matchStartPlace.focus()', 10 );  
+        return;      
+    }else if(trim(document.forms[0].matchEndPlace.value).length == 0){
+        alert("'To' place is required.");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }else if(trim(document.forms[0].matchStartPlace.value) == trim(document.forms[0].matchEndPlace.value)){
+        alert("From Place and To Place should not be the same");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }else if(trim(document.forms[0].selectStartPlace.value) == "" || trim(document.forms[0].selectStartPlace.value)==null ||trim(document.forms[0].selectStartPlace.value)=="null" ){
+        alert("Invalid From Place");
+        setTimeout('document.forms[0].matchStartPlace.focus()', 10 );
+        return;        
+    }else if(trim(document.forms[0].selectEndPlace.value) == "" || trim(document.forms[0].selectEndPlace.value)==null || trim(document.forms[0].selectEndPlace.value)=="null"){
+        alert("Invalid To Place");
+        setTimeout('document.forms[0].matchEndPlace.focus()', 10 );
+        return;        
+    }
+	var chkAddOnCheckbox = document.getElementById('chkSingleLadyCheckbox');
+	// Check if the checkbox is checked
+	if (chkAddOnCheckbox.checked) {
+		document.forms[0].checkSingleLady.value ="Y";
+	} else {
+		document.forms[0].checkSingleLady.value ="N";
+	}
+	alert("Hello:"+document.forms[0].checkSingleLady.value);
+	url = applicationURL+"hiddenAction=SearchService";
+	document.forms[0].hiddenStartPlaceID.value=fromPlaceID;
+	document.forms[0].action = "http://localhost:8080/OTRSOnline/jqreq.do?hiddenAction=SearchService";
+    document.forms[0].hiddenEndPlaceID.value=toPlaceID;
+    document.forms[0].txtStartPlaceCode.value = fromPlaceCode;
+    document.forms[0].txtEndPlaceCode.value = toPlaceCode;
+    document.forms[0].hiddenStartPlaceName.value =document.getElementById("matchStartPlace").value;
+    document.forms[0].hiddenEndPlaceName.value =document.getElementById("matchEndPlace").value;
+    document.forms[0].matchStartPlace.value =document.getElementById("matchStartPlace").value;
+    document.forms[0].matchEndPlace.value =document.getElementById("matchEndPlace").value;
+    document.forms[0].txtJourneyDate.value=document.getElementById("txtdeptDateRtrip").value;  
+	document.forms[0].hiddenOnwardJourneyDate.value = document.getElementById("txtdeptDateOtrip").value;
+	document.forms[0].hiddenReturnJourneyDate.value = document.getElementById("txtdeptDateRtrip").value;
+	document.forms[0].languageType.value = "E";
+	//alert("ALL WELL");
+	 var button = document.getElementById('searchButton');
+    // Change button content to spinner
+    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Search...';
+    // Disable button to prevent multiple clicks
+    button.disabled = true;
+	//document.forms[0].submit();
+}	
+function startDateCompareForEqual(a, b) {
+	b.value = trim(b.value);
+	if (b.value.length > 0) 
+	{
+		var fromDate = new Date(convertDateFormat(a.value));		
+		var toDate = new Date(convertDateFormat(b.value));	
+		diff = toDate.getTime() - fromDate.getTime();
+	    diff = Math.floor(diff / (1000 * 60 * 60 * 24) );
+		if (diff >= 0) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	 }
+	 else 
+	 {
+	 	return true;
+	 }
+	}
+function setOnwardDate(){
+    document.forms[0].txtJourneyDate.value = document.getElementById('txtdeptDateOtrip').value;
+    document.forms[0].hiddenOnwardJourneyDate.value = document.forms[0].txtJourneyDate.value;   
+    //loadClassList(fromPlaceID,toPlaceID);
+}
+function setReturnDate(){
+    document.forms[0].txtReturnDate.value = document.getElementById('txtdeptDateRtrip').value;
+    document.forms[0].hiddenReturnJourneyDate.value = document.forms[0].txtReturnDate.value;   
+   // loadClassList(fromPlaceID,toPlaceID);
+}
+function onloadFun(){
+document.getElementById("matchStartPlace").focus();
+document.getElementById("matchStartPlace").value = "";
+document.getElementById("matchEndPlace").value = "";
+
+var currentTime = new Date();
+var month = currentTime.getMonth() + 1;
+var day = currentTime.getDate();
+var year = currentTime.getFullYear();
+   if(day < 10) day =  "0"+day;
+   if(month < 10) month =  "0"+month;
+   var currentDate = day + "/" + month + "/" + year;
+   var maxResDate = addDays(currentDate, 30);
+   //Setting Current Date nd Max Reservation Date
+   document.forms[0].hiddenCurrentDate.value = currentDate;
+   document.forms[0].hiddenMaxValidReservDate.value=maxResDate;
+   //alert(":hiddenCurrentDate:"+document.forms[0].hiddenCurrentDate.value);
+   //alert(":hiddenMaxValidReservDate:"+document.forms[0].hiddenMaxValidReservDate.value);
+   document.getElementById('txtdeptDateRtrip').value ="DD/MM/YYYY";//Return Date  
+   document.getElementById('txtdeptDateOtrip').value ="DD/MM/YYYY"; //Onward Date 
+   document.forms[0].txtJourneyDate.value = document.getElementById('txtdeptDateOtrip').value; 
+   document.forms[0].txtReturnDate.value = document.getElementById('txtdeptDateRtrip').value; 
+   //
+   var captcha = generateCaptcha();
+   document.getElementById('captcha').innerHTML = captcha;
+   document.getElementById('hidden-captcha').value = captcha;
+   //
+   //removeSessionAttributes();
+}
+function addDays(date, days) {
+	darr = date.split("/");    // ["29", "1", "2016"]
+	var date1 = new Date(parseInt(darr[2]),parseInt(darr[1])-1,parseInt(darr[0]));
+	  var result = new Date(date1);
+	  result.setDate(result.getDate() + days);
+	  //return result;
+	  date2 = new Date(result);
+	  var mnth="0";
+	  var days="0";
+	  //alert("date::"+(date2.getMonth()+1));
+	  if((date2.getDate()+1)<10){
+		  //alert("hiiiiiiiiii");
+		  days+=parseInt(date2.getDate());
+		  //alert("hiiiiiiiiii:::"+mnth);
+	  }else{
+		  var days = date2.getDate();
+	  }
+	  if((date2.getMonth()+1)<10){
+		  //alert("hiiiiiiiiii");
+		  mnth+=parseInt(date2.getMonth()+1);
+		  //alert("hiiiiiiiiii:::"+mnth);
+	  }else{
+		  var mnth = date2.getMonth()+1;
+	  }
+	  return days+'/'+mnth+'/'+date2.getFullYear();
+	} 
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function loadTripDetails(serviceID, tripCode, startPlaceID, endPlaceID, journeyDate, classID) {
+    console.log("Function called");
+    console.log("serviceID:", serviceID);
+    console.log("tripCode:", tripCode);
+    console.log("startPlaceID:", startPlaceID);
+    console.log("endPlaceID:", endPlaceID);
+    console.log("journeyDate:", journeyDate);
+    console.log("classID:", classID);
+
+    $.ajax({
+      type: "POST",
+      url: "https://www.tnstc.in/OTRSOnline/advanceNewBooking.do",
+      data: {
+        ServiceID: serviceID,
+        TripCode: tripCode,
+        StartPlaceID: startPlaceID,
+        EndPlaceID: endPlaceID,
+        JourneyDate: journeyDate,
+        ClassID: classID
+      },
+      cache: false,
+      success: function(data) {
+        console.log("Success:", data);
+        // Update modal content with the response data
+        $('#TripcodePopUp .modal-body').html(data);
+        // Show the modal
+        $('#TripcodePopUp').modal('show');
+      },
+      error: function(xhr, status, error) {
+        console.log('Error:', xhr, status, error);
+        if (xhr.status === 404) {
+          alert("The requested resource was not found (404). Please check the URL or contact support.");
+        } else {
+          alert("An error occurred: " + status + " - " + error);
+        }
+      }
+    });
+  }
+</script>
+<script type="text/javascript">
+  function handleButtonClick(clickedIndex) {
+	  var clickedButton = document.getElementById('layoutButton' + clickedIndex);
+	    
+	    // Check if the button is disabled
+	    var isDisabled = clickedButton.getAttribute('disabled');
+	    if (isDisabled !== null && isDisabled !== false) {
+	      // Optionally, show an alert message
+	      alert('This button is disabled. Please close the window.');
+	      return;
+	    }
+	    
+	    // Disable all other buttons
+	    var buttons = document.querySelectorAll('[id^="layoutButton"]');
+	    for (var i = 0; i < buttons.length; i++) {
+	      var button = buttons[i];
+	      var index = button.id.replace('layoutButton', ''); // Extract index from ID
+	      if (index !== clickedIndex) {
+	        button.disabled = true;
+	      }
+	    }
+  }
+</script>
+
+<style>
+  .button[disabled] {
+    cursor: not-allowed;
+    position: relative;
+  }
+  
+  .button[disabled]:hover::after {
+    content: "Please close already opened layout.";
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+  }
+</style>
+<script>
+function signOut() {
+    // Clear local storage
+    localStorage.clear();
+    // Clear session storage
+    sessionStorage.clear();
+    // Redirect to the logout action
+    window.location.href = 'logout.do';
+}
+</script>
+</head>
+<body>
+<form name="advanceBookingActionForm" method="post" action="/OTRSOnline/advanceNewBooking.do;jsessionid=9311C69D7CA8B0C6915C08CA940BC976">
+<!-- Preloader -->
+<div id="preloader"><div data-loader="dual-ring"></div>
+  <div id="loading-message">Welcome to TNSTC</div>
+</div><!-- Preloader End <div data-loader="dual-ring"></div>-->
+
+<!-- Document Wrapper   
+============================================= -->
+<div id="main-wrapper">
+
+  <!-- Header
+  ============================================= -->
+  <header id="header">
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column justify-content-start"> 
+          
+          <!-- Logo
+          ============================================= -->
+          <div class="logo">
+           
+         	<a href="https://www.tnstc.in/OTRSOnline" title="TNSTC"><img src="newHSite/images/logo.png" alt="TNSTC"  /></a>
+           
+          </div><!-- Logo end --><!-- Logo end -->
+          
+        </div>
+        
+        <div class="header-column justify-content-end">
+        
+          <!-- Primary Navigation
+          ============================================= -->
+          <nav class="primary-menu navbar navbar-expand-lg">
+            <div id="header-nav" class="collapse navbar-collapse">
+              <ul class="navbar-nav">
+                
+                <li class="login-signup ml-lg-2 dropdown">
+                		<a class="pl-lg-4 pr-0 dropdown-toggle" href="https://www.tnstc.in/inner_pages_2024/typesofservices.html">Services</a>
+             		<ul class="dropdown-menu" style="margin-left: -104.469px; display: none; padding-top: 10px; margin-top: 0px; padding-bottom: 10px; margin-bottom: 0px;">
+                        <li><a class="dropdown-item" href="./preNewTicketCancellation.do">Cancel Ticket</a></li>
+						<li><a class="dropdown-item" href="./preGuestViewBookingHistory.do">View Ticket</a></li>
+						<li><a class="dropdown-item" href="./preALLPNRStatus.do">Ticket Status</a></li>
+						<li><a class="dropdown-item" href="https://www.tnstc.in/SETCPG/preGatewayTransactionStatus.do?hiddenAction=CheckRefundStatus">Refund / Transaction Status</a></li>
+                	</ul>
+                </li>
+                
+                
+                
+                <li class="login-signup ml-lg-2" ><a class="pl-lg-4 pr-0" data-toggle="modal" data-target="##login-signup" href="#" title="Login / Sign up" style="color:#0071cc">
+                <a href="https://www.tnstc.in/OTRSOnline/">Guest</a> <span class="d-none d-lg-inline-block"><i class="fas fa-user"></i></span></a></li>
+              </ul>
+            </div>
+          </nav><!-- Primary Navigation end --> 
+          
+        </div>
+        
+        <!-- Collapse Button
+        ============================================= -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav"> <span></span> <span></span> <span></span> </button>
+      </div>
+    </div>
+  </header><!-- Header end -->
+  
+  	<!-- Page Header
+    ============================================= -->
+    <section class="page-header page-header-text-light bg-secondary">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h1>Bus - List Page</h1>
+          </div>
+          <div class="col-md-4">
+            <ul class="breadcrumb justify-content-start justify-content-md-end mb-0">
+               
+				<li><a href="https://www.tnstc.in/OTRSOnline/">Home</a></li>
+               
+               
+              <li><a href="booking-bus.html">Bus</a></li>
+              <li class="active">Bus List Page</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section><!-- Page Header end -->
+    
+  <!-- Content
+  ============================================= -->
+  <div id="content">
+      <section class="container">
+        <div class="row">
+          <div class="col mb-2">
+            
+              <div class="form-row">
+                <div class="col-md-3 form-group">
+                  <input type="text" class="form-control" placeholder="Source" autocomplete="off" id="matchStartPlace" onclick="clearAutoCompleteFromPlace()">
+                  <span class="icon-inside"><i class="fas fa-map-marker-alt"></i></span> </div>
+                <div class="col-md-3  form-group">
+                  <input type="text" class="form-control" id="matchEndPlace" placeholder="Destination" autocomplete="off" onclick="clearAutoCompleteToPlace()">
+                  <span class="icon-inside"><i class="fas fa-map-marker-alt"></i></span> </div>
+                <div class="col-md-2 form-group">
+                  <input id="txtdeptDateOtrip" type="text" class="form-control" placeholder="DD/MM/YYYY" readonly="readonly" maxlength="10" size="10" onchange="setOnwardDate();" name="txtdeptDateOtrip" >
+                  <span class="icon-inside"><i class="far fa-calendar-alt"></i></span> </div>
+                  <div class="col-md-2 form-group">
+                  <input id="txtdeptDateRtrip" type="text" class="form-control" placeholder="DD/MM/YYYY" readonly="readonly" maxlength="10" size="10" onchange="setReturnDate();" name="txtdeptDateRtrip" >
+                  <span class="icon-inside"><i class="far fa-calendar-alt"></i></span> </div>
+                <div class="col-md-1">                  		
+                   <input name="" type="checkbox" id="chkSingleLadyCheckbox" value="" style="width: 18px; height: 18px; margin-top:6px;"> <span style="color:#888; font-weight:bold; font-size:11px;">SingleLady</span>
+                  </div>
+                
+                <div class="col-md-1  form-group">
+                  <button class="btn btn-sm btn-primary" type="button" id="searchButton" onClick="javascript:setSearchAction('SearchService')">Search</button>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+         
+        <div class="row">
+        
+        <!-- Side Panel
+        ============================================= -->
+          <aside class="col-md-3">
+            <div class="bg-light shadow-md rounded p-3">
+              <h3 class="text-5">Filter</h3>
+              <div class="accordion accordion-alternate style-2" id="toggleAlternate">
+        <!--         <div class="card">
+    <div class="card-header" id="departure">
+        <h5 class="mb-0"> <a href="#" class="collapse" data-toggle="collapse" data-target="#toggleDeparture" aria-expanded="true" aria-controls="toggleDeparture">Departure Time</a> </h5>
+    </div>
+    <div id="toggleDeparture" class="collapse show" aria-labelledby="departure">
+        <div class="card-body">
+            <p><span class="slider-time-departure">00:00</span> - <span class="slider-time-departure">23:59</span></p>
+            <div id="slider-range-departure"></div>
+        </div>
+    </div>
+</div> -->
+
+<!-- START Fare Range FILTER -->
+<!-- HTML for filters -->
+<div class="card">
+    <div class="card-header" id="price">
+        <h5 class="mb-0"><a href="#" class="collapse" data-toggle="collapse" data-target="#togglePrice" aria-expanded="true" aria-controls="togglePrice">Price</a></h5>
+    </div>
+    <div id="togglePrice" class="collapse show" aria-labelledby="price">
+        <div id="fare-range-slider"></div>
+        <p>Fare Range: <span id="fare-range-values"></span></p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="depTime">
+        <h5 class="mb-0"><a href="#" class="collapse" data-toggle="collapse" data-target="#toggleDepTime" aria-expanded="true" aria-controls="toggleDepTime">Departure Time</a></h5>
+    </div>
+    <div id="toggleDepTime" class="collapse show" aria-labelledby="depTime">
+        <div id="slider-range-departure"></div>
+        <p>Departure Time: <span class="slider-time-departure"></span> - <span class="slider-time-departure"></span></p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="busType">
+        <h5 class="mb-0"><a href="#" class="collapse" data-toggle="collapse" data-target="#togglebusType" aria-expanded="true" aria-controls="togglebusType">Bus Type</a></h5>
+    </div>
+    <div id="togglebusType" class="collapse show" aria-labelledby="busType">
+        <div class="card-body">
+            
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="AIR CONDITIONED" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="AIR CONDITIONED">AIR CONDITIONED</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="AC SLEEPER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="AC SLEEPER">AC SLEEPER</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="AC SLEEPER SEATER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="AC SLEEPER SEATER">AC SLEEPER SEATER</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="AC 3X2" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="AC 3X2">AC 3X2</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="DELUXE 3X2" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="DELUXE 3X2">DELUXE 3X2</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="NON AC SLEEPER SEATER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="NON AC SLEEPER SEATER">NON AC SLEEPER SEATER</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="NON AC SLEEPER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="NON AC SLEEPER">NON AC SLEEPER</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="NON AC LOWER BERTH SEATER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="NON AC LOWER BERTH SEATER">NON AC LOWER BERTH SEATER</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="AC LOWER BERTH SEATER" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="AC LOWER BERTH SEATER">AC LOWER BERTH SEATER</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="ULTRA DELUXE" name="busType" class="custom-control-input">
+                <label class="custom-control-label" for="ULTRA DELUXE">ULTRA DELUXE</label>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</div>
+<!-- END CLASS OF SERVICE FILTER   -->                 
+              </div>
+            </div>
+          </aside><!-- Side Panel end -->
+          
+          <div class="col-md-9 mt-4 mt-md-0">
+            <div class="bg-light shadow-md rounded py-1">
+              <div class="mx-3 mb-3 text-center">
+                <h2 class="text-6">TRICHY <span class="col-2 col-sm-auto text-8 text-black-50 text-center trip-arrow">➝</span>COIMBATORE</h2><span style="background-color:#1c63c4;color:#FFF;padding:3px;border-radius:3px; ">Journey date 13/12/2025</span>
+              
+              
+              </div>
+ <div class="text-1 bg-light-3 border border-right-0 border-left-0 py-2 px-3">
+  <div class="row">
+    <div class="col col-sm-3">
+      <span class="d-none d-sm-block">
+        Corporation 
+        <i id="sort-operators-asc" class="fas fa-arrow-up"></i>
+        <i id="sort-operators-desc" class="fas fa-arrow-down"></i>
+      </span>
+    </div>
+    <div class="col col-sm-2 text-center">
+      Departure 
+      <i id="sort-departure-asc" class="fas fa-arrow-up"></i>
+      <i id="sort-departure-desc" class="fas fa-arrow-down"></i>
+    </div>
+    <div class="col-sm-2 text-center d-none d-sm-block">
+      Duration 
+      <i id="sort-duration-asc" class="fas fa-arrow-up"></i>
+      <i id="sort-duration-desc" class="fas fa-arrow-down"></i>
+    </div>
+    <div class="col col-sm-2 text-center">
+      Arrival 
+      <i id="sort-arrival-asc" class="fas fa-arrow-up"></i>
+      <i id="sort-arrival-desc" class="fas fa-arrow-down"></i>
+    </div>
+    <div class="col col-sm-3 text-center d-none d-sm-block">
+      Price 
+      <i id="sort-price-asc" class="fas fa-arrow-up"></i>
+      <i id="sort-price-desc" class="fas fa-arrow-down"></i>
+    </div>
+  </div>
+</div>
+<!--STARTS SERVICE BUS LIST  --> 
+
+
+  
+  <div class="bus-list" data-time="10:25" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('27621,80,AC 3X2,190,0,5.50,10:25,TRICHY KKBT,TRICHY,COIMBATORE,1025TRICOIKK02A,805H,74,TRI',
+                            '1025TRICOIKK02A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   1025TRICOIKK02A
+</a>
+          </B> / 805H</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">10:25</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">15:15</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton0">
+              <span class="text-1">50 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton0"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('27621,80,AC 3X2,190,0,5.50,10:25,TRICHY KKBT,TRICHY,COIMBATORE,1025TRICOIKK02A,805H,74,TRI','0', '50');handleButtonClick('0');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR0" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="10:40" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33073,166,DELUXE 3X2,194,0,5.50,10:40,TRICHY KKBT,TRICHY,COIMBATORE,1040TRICOIKK05L,533AB,74,TRI',
+                            '1040TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1040TRICOIKK05L
+</a>
+          </B> / 533AB</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">10:40</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR,KANGEYAM</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">15:30</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          190 -->
+          
+          
+          
+			190
+												
+          
+          </div>
+          <div class="" id="selectButton1">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton1"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33073,166,DELUXE 3X2,194,0,5.50,10:40,TRICHY KKBT,TRICHY,COIMBATORE,1040TRICOIKK05L,533AB,74,TRI','1', '43');handleButtonClick('1');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR1" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="10:50" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33033,166,DELUXE 3X2,194,0,5.50,10:50,TRICHY KKBT,TRICHY,COIMBATORE,1050TRICOIKK05L,533C,74,TRI',
+                            '1050TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1050TRICOIKK05L
+</a>
+          </B> / 533C</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">10:50</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">15:40</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          160 -->
+          
+          
+          
+			160
+												
+          
+          </div>
+          <div class="" id="selectButton2">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton2"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33033,166,DELUXE 3X2,194,0,5.50,10:50,TRICHY KKBT,TRICHY,COIMBATORE,1050TRICOIKK05L,533C,74,TRI','2', '43');handleButtonClick('2');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR2" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="10:55" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33030,80,AC 3X2,190,0,5.50,10:55,TRICHY KKBT,TRICHY,COIMBATORE,1055TRICOIKK05A,931A,74,TRI',
+                            '1055TRICOIKK05A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   1055TRICOIKK05A
+</a>
+          </B> / 931A</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">10:55</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">15:45</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton3">
+              <span class="text-1">51 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton3"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33030,80,AC 3X2,190,0,5.50,10:55,TRICHY KKBT,TRICHY,COIMBATORE,1055TRICOIKK05A,931A,74,TRI','3', '51');handleButtonClick('3');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR3" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="14:30" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33034,166,DELUXE 3X2,194,0,5.50,14:30,TRICHY KKBT,TRICHY,COIMBATORE,1430TRICOIKK05L,909G,74,TRI',
+                            '1430TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1430TRICOIKK05L
+</a>
+          </B> / 909G</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">14:30</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">19:20</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          160 -->
+          
+          
+          
+			160
+												
+          
+          </div>
+          <div class="" id="selectButton4">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton4"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33034,166,DELUXE 3X2,194,0,5.50,14:30,TRICHY KKBT,TRICHY,COIMBATORE,1430TRICOIKK05L,909G,74,TRI','4', '43');handleButtonClick('4');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR4" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="14:55" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('27623,166,DELUXE 3X2,194,0,5.50,14:55,TRICHY KKBT,TRICHY,COIMBATORE,1455TRICOIKK02L,909Q,74,TRI',
+                            '1455TRICOIKK02L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1455TRICOIKK02L
+</a>
+          </B> / 909Q</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">14:55</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">19:45</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          160 -->
+          
+          
+          
+			160
+												
+          
+          </div>
+          <div class="" id="selectButton5">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton5"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('27623,166,DELUXE 3X2,194,0,5.50,14:55,TRICHY KKBT,TRICHY,COIMBATORE,1455TRICOIKK02L,909Q,74,TRI','5', '43');handleButtonClick('5');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR5" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="16:25" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33035,166,DELUXE 3X2,194,0,5.50,16:25,TRICHY KKBT,TRICHY,COIMBATORE,1625TRICOIKK05L,534A,74,TRI',
+                            '1625TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1625TRICOIKK05L
+</a>
+          </B> / 534A</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">16:25</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">21:15</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          160 -->
+          
+          
+          
+			160
+												
+          
+          </div>
+          <div class="" id="selectButton6">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton6"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33035,166,DELUXE 3X2,194,0,5.50,16:25,TRICHY KKBT,TRICHY,COIMBATORE,1625TRICOIKK05L,534A,74,TRI','6', '43');handleButtonClick('6');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR6" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="16:55" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('21901,80,AC 3X2,190,0,5.50,16:55,TRICHY KKBT,TRICHY,COIMBATORE,1655TRICOIKK02A,533,74,TRI',
+                            '1655TRICOIKK02A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   1655TRICOIKK02A
+</a>
+          </B> / 533</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">16:55</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR,KANGEYAM</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">21:45</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton7">
+              <span class="text-1">51 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton7"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('21901,80,AC 3X2,190,0,5.50,16:55,TRICHY KKBT,TRICHY,COIMBATORE,1655TRICOIKK02A,533,74,TRI','7', '51');handleButtonClick('7');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR7" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="18:35" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('27622,166,DELUXE 3X2,194,0,5.50,18:35,TRICHY KKBT,TRICHY,COIMBATORE,1835TRICOIKK02L,909B,74,TRI',
+                            '1835TRICOIKK02L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   1835TRICOIKK02L
+</a>
+          </B> / 909B</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">18:35</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">23:25</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          160 -->
+          
+          
+          
+			160
+												
+          
+          </div>
+          <div class="" id="selectButton8">
+              <span class="text-1">42 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton8"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('27622,166,DELUXE 3X2,194,0,5.50,18:35,TRICHY KKBT,TRICHY,COIMBATORE,1835TRICOIKK02L,909B,74,TRI','8', '42');handleButtonClick('8');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR8" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="18:40" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('27620,80,AC 3X2,190,0,5.50,18:40,TRICHY KKBT,TRICHY,COIMBATORE,1840TRICOIKK02A,003A,74,TRI',
+                            '1840TRICOIKK02A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   1840TRICOIKK02A
+</a>
+          </B> / 003A</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">18:40</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">23:30</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton9">
+              <span class="text-1">51 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton9"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('27620,80,AC 3X2,190,0,5.50,18:40,TRICHY KKBT,TRICHY,COIMBATORE,1840TRICOIKK02A,003A,74,TRI','9', '51');handleButtonClick('9');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR9" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="20:11" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33074,166,DELUXE 3X2,194,0,5.50,20:11,TRICHY KKBT,TRICHY,COIMBATORE,2011TRICOIKK05L,533AB,74,TRI',
+                            '2011TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   2011TRICOIKK05L
+</a>
+          </B> / 533AB</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">20:11</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR,KANGEYAM</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">01:01</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          190 -->
+          
+          
+          
+			190
+												
+          
+          </div>
+          <div class="" id="selectButton10">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton10"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33074,166,DELUXE 3X2,194,0,5.50,20:11,TRICHY KKBT,TRICHY,COIMBATORE,2011TRICOIKK05L,533AB,74,TRI','10', '43');handleButtonClick('10');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR10" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="20:30" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('33036,166,DELUXE 3X2,194,0,5.50,20:30,TRICHY KKBT,TRICHY,COIMBATORE,2030TRICOIKK05L,533D,74,TRI',
+                            '2030TRICOIKK05L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   2030TRICOIKK05L
+</a>
+          </B> / 533D</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">20:30</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">01:20</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          185 -->
+          
+          
+          
+			185
+												
+          
+          </div>
+          <div class="" id="selectButton11">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton11"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('33036,166,DELUXE 3X2,194,0,5.50,20:30,TRICHY KKBT,TRICHY,COIMBATORE,2030TRICOIKK05L,533D,74,TRI','11', '43');handleButtonClick('11');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR11" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="20:55" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('22802,80,AC 3X2,190,0,5.50,20:55,TRICHY KKBT,TRICHY,COIMBATORE,2055TRICOIKK02A,909H,74,TRI',
+                            '2055TRICOIKK02A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   2055TRICOIKK02A
+</a>
+          </B> / 909H</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">20:55</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">01:45</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton12">
+              <span class="text-1">51 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton12"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('22802,80,AC 3X2,190,0,5.50,20:55,TRICHY KKBT,TRICHY,COIMBATORE,2055TRICOIKK02A,909H,74,TRI','12', '51');handleButtonClick('12');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR12" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="22:25" data-bus-type="AC 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">AC 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('22803,80,AC 3X2,190,0,5.50,22:25,TRICHY KKBT,TRICHY,COIMBATORE,2225TRICOIKK02A,909L,74,TRI',
+                            '2225TRICOIKK02A',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '80');">
+   2225TRICOIKK02A
+</a>
+          </B> / 909L</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">22:25</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">03:15</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          217 -->
+          
+          
+          
+			217
+												
+          
+          </div>
+          <div class="" id="selectButton13">
+              <span class="text-1">50 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton13"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('22803,80,AC 3X2,190,0,5.50,22:25,TRICHY KKBT,TRICHY,COIMBATORE,2225TRICOIKK02A,909L,74,TRI','13', '50');handleButtonClick('13');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR13" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="bus-list" data-time="22:55" data-bus-type="DELUXE 3X2">
+    <div class="bus-item">
+      <div class="row align-items-sm-center flex-row py-4 px-3">
+        <div class="col col-sm-3">
+          <span class="text-3 text-dark operator-name">KUMBAKONAM</span>
+          <span class="text-1 text-muted d-block">DELUXE 3X2</span>
+          <span class="text-1 text-muted d-block"><B>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#TripcodePopUp"
+   onClick="loadTripDetails('27596,166,DELUXE 3X2,194,0,5.50,22:55,TRICHY KKBT,TRICHY,COIMBATORE,2255TRICOIKK02L,805M,74,TRI',
+                            '2255TRICOIKK02L',
+                            '74',
+                            '114',
+                            '13/12/2025',
+                            '166');">
+   2255TRICOIKK02L
+</a>
+          </B> / 805M</span>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-4 text-dark">22:55</span>
+          <small class="text-muted d-block">TRICHY KKBT</small>
+        </div>
+        <div class="col col-sm-2 text-center d-none d-sm-block time-info">
+
+        
+          <span class="text-3 duration">5.50Hrs<!-- 06h 32m -->  </span>
+          <small class="d-block" style="color: blue;">
+    <b>Via-KARUR,KANGEYAM</b>
+</small>
+        </div>
+        <div class="col col-sm-2 text-center time-info">
+          <span class="text-5 text-dark">03:45</span>
+          <small class="text-muted d-block">COIMBATORE</small>
+        </div>
+         
+        <div class="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
+          <div class="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">Rs 
+          <!-- ACTUAL 
+          185 -->
+          
+          
+          
+			185
+												
+          
+          </div>
+          <div class="" id="selectButton14">
+              <span class="text-1">43 Seats Available</span>
+            <br>
+            <button class="buttonVS" id="layoutButton14"  type="button" data-toggle="collapse" data-target="#collapseRow1" aria-expanded="false" aria-controls="collapseExample" onclick="javascript:showLayOut('27596,166,DELUXE 3X2,194,0,5.50,22:55,TRICHY KKBT,TRICHY,COIMBATORE,2255TRICOIKK02L,805M,74,TRI','14', '43');handleButtonClick('14');return false;">
+              <span>VIEW SEATS</span>
+            </button>
+          </div>
+        </div>
+         
+      </div>
+      <div id="dvLoadStatusTR14" style="display:none;" class="center seatLayout">
+			<div align="center"><h1><font size="3" face="Arial, Helvetica, sans-serif"><span class="opensans size14">
+			Please wait ...  Loading Seat Layout
+			</span></font></h1></div>
+	  </div>
+    </div>
+  </div>
+    
+
+<!--END SERVICE BUS LIST  --> 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+	var durationElement = document.querySelector('.duration');
+    console.log('Duration Element:', durationElement);
+    
+    if (durationElement) {
+        var durationText = durationElement.textContent.trim();
+        console.log('Duration Text:', durationText);
+    } else {
+        console.error('Duration element not found.');
+    }
+	
+	// Function to sort bus items
+    function sortBusItems(compare, ascending = true) {
+       var busList = document.querySelector('.bg-light.shadow-md.rounded.py-1');
+        var busItems = Array.from(busList.querySelectorAll('.bus-item'));
+        busItems.sort(compare);
+        if (!ascending) {
+            busItems.reverse();
+        }
+        busItems.forEach(function(item) {
+            busList.appendChild(item.parentElement);
+        });
+    }
+    // Operator Sorting
+    function compareOperators(a, b) {
+        var operatorA = a.querySelector('.operator-name').textContent.trim();
+        var operatorB = b.querySelector('.operator-name').textContent.trim();
+        return operatorA.localeCompare(operatorB);
+    }
+    //Departure Sorting
+    function compareDeparture(a, b) {
+        var timeA = a.querySelector('.time-info .text-4').textContent.trim();
+        var timeB = b.querySelector('.time-info .text-4').textContent.trim();
+        return timeToMinutes(timeA) - timeToMinutes(timeB);
+    }
+    //Arrival Sorting
+    function compareArrival(a, b) {
+    	var timeA = a.querySelector('.time-info .text-5').textContent.trim();
+        var timeB = b.querySelector('.time-info .text-5').textContent.trim();
+        return timeToMinutes(timeA) - timeToMinutes(timeB);
+    }
+  //Price Sorting
+    function comparePrice(a, b) {
+        var priceA = parseInt(a.querySelector('.price').textContent.replace('Rs ', ''));
+        var priceB = parseInt(b.querySelector('.price').textContent.replace('Rs ', ''));
+        return priceA - priceB;
+    }
+    
+    //Duration Sorting
+    function compareDuration(a, b) {
+        var durationA = a.querySelector('.duration').textContent.trim();
+        var durationB = b.querySelector('.duration').textContent.trim();
+        console.log('Duration Element:', durationElement);
+        console.log("DurationA"+durationA+":DurationB:"+durationB);
+        // Parse duration in the format '11.30Hrs.', '12.30Hrs.', etc.
+        var timeA = parseDuration(durationA);
+        var timeB = parseDuration(durationB);
+        console.log("TimeA:"+timeA+":TimeB:"+timeB);
+        return timeA - timeB;
+    }
+    
+     
+    function parseDuration(duration) {
+        // Regex to match hours and minutes from the duration string '9.30Hrs.'
+        var regex = /(\d+)\.(\d+)Hrs\./;
+        var match = duration.match(regex);
+        console.log("Match:"+match);
+        
+        if (match && match.length >= 3) {
+            var hours = parseInt(match[1], 10); // Convert hours part to integer
+            console.log("Hours:"+hours+":Match[1]:"+match[1]);
+            var minutes = parseInt(match[2], 10); // Convert minutes part to integer
+            console.log("Console:"+console+":match[2]:"+match[2]);
+            // Calculate total minutes
+            var totalMinutes = hours * 60 + minutes;
+            console.log("TotalMinutes:"+totalMinutes)
+            return totalMinutes;
+        } else {
+            console.error('Invalid duration format: ' + duration);
+            return 0; // Default value or handle as appropriate
+        }
+    }
+    
+        
+    // Attach event listeners to sorting icons
+    document.getElementById('sort-operators-asc').addEventListener('click', function() {
+        sortBusItems(compareOperators, true);
+    });
+    document.getElementById('sort-operators-desc').addEventListener('click', function() {
+        sortBusItems(compareOperators, false);
+    });
+    document.getElementById('sort-departure-asc').addEventListener('click', function() {
+        sortBusItems(compareDeparture, true);
+    });
+    document.getElementById('sort-departure-desc').addEventListener('click', function() {
+        sortBusItems(compareDeparture, false);
+    });
+    document.getElementById('sort-duration-asc').addEventListener('click', function() {
+        sortBusItems(compareDuration, true);
+    });
+    document.getElementById('sort-duration-desc').addEventListener('click', function() {
+        sortBusItems(compareDuration, false);
+    });
+    document.getElementById('sort-arrival-asc').addEventListener('click', function() {
+        sortBusItems(compareArrival, true);
+    });
+    document.getElementById('sort-arrival-desc').addEventListener('click', function() {
+        sortBusItems(compareArrival, false);
+    });
+    document.getElementById('sort-price-asc').addEventListener('click', function() {
+        sortBusItems(comparePrice, true);
+    });
+    document.getElementById('sort-price-desc').addEventListener('click', function() {
+        sortBusItems(comparePrice, false);
+    });
+    // Helper functions
+    function timeToMinutes(time) {
+        var parts = time.split(':');
+        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    }
+    
+});
+</script>
+
+<!-- START SCRIPT-NEW -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function timeToMinutes(time) {
+        var parts = time.split(":");
+        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    }
+
+    function minutesToTime(minutes) {
+        var hours = Math.floor(minutes / 60);
+        var mins = minutes % 60;
+        return ("0" + hours).slice(-2) + ":" + ("0" + mins).slice(-2);
+    }
+
+    $("#slider-range-departure").slider({
+        range: true,
+        min: 0,
+        max: 1439,
+        step: 15,
+        values: [0, 1439],
+        slide: function(event, ui) {
+            $(".slider-time-departure:first").text(minutesToTime(ui.values[0]));
+            $(".slider-time-departure:last").text(minutesToTime(ui.values[1]));
+            filterData();
+        }
+    });
+
+    $("#fare-range-slider").slider({
+        range: true,
+        min: 100,
+        max: 1000,
+        values: [100, 1000],
+        slide: function(event, ui) {
+            $("#fare-range-values").text("Rs " + ui.values[0] + " - Rs " + ui.values[1]);
+            filterData();
+        }
+    });
+
+    $(".sorting-checkboxes input[type='checkbox'], .custom-checkbox input[type='checkbox']").change(function() {
+        filterData();
+    });
+
+    function filterData() {
+        var selectedTypes = getSelectedBusTypes();
+        var fareValues = $("#fare-range-slider").slider("values");
+        var minFare = fareValues[0];
+        var maxFare = fareValues[1];
+        var depValues = $("#slider-range-departure").slider("values");
+        var minStartTime = depValues[0];
+        var minEndTime = depValues[1];
+
+        $(".bus-list").each(function() {
+            var busType = $(this).data("bus-type");
+            var departureTime = timeToMinutes($(this).data("time"));
+            var serviceFare = parseInt($(this).find(".price").text().replace("Rs", ""));
+            var display = true;
+
+            if (selectedTypes.length > 0 && !selectedTypes.includes(busType)) {
+                display = false;
+            }
+
+            if (serviceFare < minFare || serviceFare > maxFare) {
+                display = false;
+            }
+
+            if (departureTime < minStartTime || departureTime > minEndTime) {
+                display = false;
+            }
+
+            if (display) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    function getSelectedBusTypes() {
+        var selectedTypes = [];
+        $(".custom-checkbox input[type='checkbox']:checked").each(function() {
+            selectedTypes.push($(this).attr("id"));
+        });
+        return selectedTypes;
+    }
+
+    $("#fare-range-values").text("Rs 100 - Rs 1000");
+    $(".slider-time-departure:first").text("00:00");
+    $(".slider-time-departure:last").text("23:59");
+});
+</script>
+<!-- END SCRIPT -NEW-->
+
+        </div><div>
+<div>Note:<br>. Click on Trip Code link to view Fare , Seat Availability & Pickup Points.
+ <br>. Distance and Journey hours are approximate.<br>
+ . Concessions and Levies are applicable as per rules.<br>
+ . We follow Railway Timings (24 Hours Format).<br>
+ </div>
+</div></div>
+      </section>
+      
+  </div><!-- Content end -->
+  
+  <!-- Footer
+  ============================================= -->
+ <!--  <footer id="footer">
+        
+    <div class="container">
+      <div class="footer-copyright">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"> <a class="nav-link active" href="https://www.tnstc.in/innerHtmls/aboutus.html">About Us</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.tnstc.in/innerHtmls/faq.html">Faq</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.tnstc.in/innerHtmls/contactus.html">Contact</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="https://www.tnstc.in/innerHtmls/privacy.html">Privacy Policy</a> </li>
+        </ul>
+        <p class="copyright-text">Copyright © 2024 <a href="#">TNSTC</a>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>Footer end -->
+<!-- Trip code PopUp Start  Modal -->
+<!-- Modal -->
+<div class="modal fade" id="TripcodePopUp" tabindex="-1" role="dialog" aria-labelledby="TripcodePopUpLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document"> <!-- Added 'modal-lg' class for large size -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal content will be dynamically loaded here -->
+      </div>
+      <div class="modal-footer">
+</div>
+    </div>
+  </div>
+</div>
+<!-- Trip code PopUp End -->  
+  
+</div><!-- Document Wrapper end -->
+
+<!-- Back to Top
+============================================= -->
+<a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="newSite/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="newSite/vendor/bootstrap-spinner/bootstrap-spinner.js"></script> 
+
+<!-- <script src="newSite/vendor/daterangepicker/daterangepicker.js"></script>-->
+
+<script type="text/javascript" src="https://unpkg.com/bootstrap-daterangepicker@3.0.3/daterangepicker.js"></script> 
+<!-- <link rel="stylesheet" type="text/css" href="newSite/vendor/daterangepicker/daterangepicker.css" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.3/daterangepicker.min.css">
+<!-- <script src="newSite/vendor/jquery-seat-charts/jquery.seat-charts.min.js"></script>  -->
+<script src="newSite/js/theme.js"></script> 
+<!-- Accordion JS Hide and Show -->
+
+<!-- <script src="newSite/js/hide-show-script.js"></script>
+<link rel="stylesheet" href="newSite/css/hide-show-style.css"> COMMENTED TAKING TIME -->
+
+<input type="hidden" name="hiddenJourneyType" value="O">
+<input type="hidden" name="hiddenClassName" value="">
+<input type="hidden" name="radOnwardServiceID" value="">
+<script type="text/javascript" language="Javascript1.1"> 
+
+<!-- Begin 
+
+     var bCancel = false; 
+
+    function validateAdvanceBookingActionForm(form) {                                                                   
+        if (bCancel) 
+      return true; 
+        else 
+       return validateRequired(form); 
+   } 
+
+    function required () { 
+     this.aa = new Array("txtJourneyDate", "", new Function ("varName", " return this[varName];"));
+    } 
+
+
+
+function validateDate(form) {
+               var bValid = true;
+               var focusField = null;
+               var i = 0;
+               var fields = new Array();
+               oDate = new DateValidations();
+               for (x in oDate) {
+                   var value = form[oDate[x][0]].value;
+                   var datePattern = oDate[x][2]("datePatternStrict");
+                   if ((form[oDate[x][0]].type == 'text' ||
+                        form[oDate[x][0]].type == 'textarea') &&
+                       (value.length > 0) &&
+                       (datePattern.length > 0)) {
+                     var MONTH = "MM";
+                     var DAY = "dd";
+                     var YEAR = "yyyy";
+                     var orderMonth = datePattern.indexOf(MONTH);
+                     var orderDay = datePattern.indexOf(DAY);
+                     var orderYear = datePattern.indexOf(YEAR);
+                     if ((orderDay < orderYear && orderDay > orderMonth)) {
+                         var iDelim1 = orderMonth + MONTH.length;
+                         var iDelim2 = orderDay + DAY.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderDay && iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderDay) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                            if (!isValidDate(matched[2], matched[1], matched[3])) {
+                               if (i == 0) {
+                                   focusField = form[oDate[x][0]];
+                               }
+                               fields[i++] = oDate[x][1];
+                               bValid =  false;
+                            }
+                         } else {
+                            if (i == 0) {
+                                focusField = form[oDate[x][0]];
+                            }
+                            fields[i++] = oDate[x][1];
+                            bValid =  false;
+                         }
+                     } else if ((orderMonth < orderYear && orderMonth > orderDay)) {
+                         var iDelim1 = orderDay + DAY.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[1], matched[2], matched[3])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                 }
+                                 fields[i++] = oDate[x][1];
+                                 bValid =  false;
+                              }
+                         } else {
+                             if (i == 0) {
+                                 focusField = form[oDate[x][0]];
+                             }
+                             fields[i++] = oDate[x][1];
+                             bValid =  false;
+                         }
+                     } else if ((orderMonth > orderYear && orderMonth < orderDay)) {
+                         var iDelim1 = orderYear + YEAR.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})(\\d{2})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})[" + delim2 + "](\\d{2})$");
+                         } else if (iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})(\\d{2})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{2})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[3], matched[2], matched[1])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                  }
+                                  fields[i++] = oDate[x][1];
+                                  bValid =  false;
+                              }
+                          } else {
+                              if (i == 0) {
+                                  focusField = form[oDate[x][0]];
+                              }
+                              fields[i++] = oDate[x][1];
+                              bValid =  false;
+                          }
+                     } else {
+                         if (i == 0) {
+                             focusField = form[oDate[x][0]];
+                         }
+                         fields[i++] = oDate[x][1];
+                         bValid =  false;
+                     }
+                  }
+               }
+               if (fields.length > 0) {
+                  focusField.focus();
+                  alert(fields.join('\n'));
+               }
+               return bValid;
+            }
+
+	    function isValidDate(day, month, year) {
+	        if (month < 1 || month > 12) {
+                    return false;
+                }
+                if (day < 1 || day > 31) {
+                    return false;
+                }
+                if ((month == 4 || month == 6 || month == 9 || month == 11) &&
+                    (day == 31)) {
+                    return false;
+                }
+                if (month == 2) {
+                    var leap = (year % 4 == 0 &&
+                               (year % 100 != 0 || year % 400 == 0));
+                    if (day>29 || (day == 29 && !leap)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateMinLength(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMinLength = new minlength();
+                for (x in oMinLength) {
+                    if (form[oMinLength[x][0]].type == 'text' ||
+                        form[oMinLength[x][0]].type == 'textarea') {
+                        var iMin = parseInt(oMinLength[x][2]("minlength"));
+                        if (form[oMinLength[x][0]].value.length < iMin) {
+                            if (i == 0) {
+                                focusField = form[oMinLength[x][0]];
+                            }
+                            fields[i++] = oMinLength[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateIntRange(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new intRange();
+                for (x in oRange) {
+                    if ((form[oRange[x][0]].type == 'text' ||
+                         form[oRange[x][0]].type == 'textarea') &&
+                        (form[oRange[x][0]].value.length > 0)) {
+                        var iMin = parseInt(oRange[x][2]("min"));
+                        var iMax = parseInt(oRange[x][2]("max"));
+                        var iValue = parseInt(form[oRange[x][0]].value);
+                        if (!(iValue >= iMin && iValue <= iMax)) {
+                            if (i == 0) {
+                                focusField = form[oRange[x][0]];
+                            }
+                            fields[i++] = oRange[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateMaxLength(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMaxLength = new maxlength();
+                for (x in oMaxLength) {
+                    if (form[oMaxLength[x][0]].type == 'text' ||
+                        form[oMaxLength[x][0]].type == 'textarea') {
+                        var iMax = parseInt(oMaxLength[x][2]("maxlength"));
+                        if (form[oMaxLength[x][0]].value.length > iMax) {
+                            if (i == 0) {
+                                focusField = form[oMaxLength[x][0]];
+                            }
+                            fields[i++] = oMaxLength[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateFloatRange(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new floatRange();
+                for (x in oRange) {
+                    if ((form[oRange[x][0]].type == 'text' ||
+                         form[oRange[x][0]].type == 'textarea') &&
+                        (form[oRange[x][0]].value.length > 0)) {
+                        var fMin = parseFloat(oRange[x][2]("min"));
+                        var fMax = parseFloat(oRange[x][2]("max"));
+                        var fValue = parseFloat(form[oRange[x][0]].value);
+                        if (!(fValue >= fMin && fValue <= fMax)) {
+                            if (i == 0) {
+                                focusField = form[oRange[x][0]];
+                            }
+                            fields[i++] = oRange[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateByte(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oByte = new ByteValidations();
+                for (x in oByte) {
+                	var field = form[oByte[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+						field.type == 'radio') {
+
+						var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+
+	                        var iValue = parseInt(value);
+	                        if (isNaN(iValue) || !(iValue >= -128 && iValue <= 127)) {
+	                            if (i == 0) {
+	                                focusField = field;
+	                            }
+	                            fields[i++] = oByte[x][1];
+	                            bValid = false;
+	                        }
+						}
+						
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRange(form) {
+                return validateIntRange(form);
+            }
+function validateInteger(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oInteger = new IntegerValidations();
+                for (x in oInteger) {
+                	var field = form[oInteger[x][0]];
+
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+						    if (si >= 0) {
+							    value = field.options[si].value;
+						    }
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                            } else {
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -2147483648 && iValue <= 2147483647)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oInteger[x][1];
+	                                bValid = false;
+	                           }
+                           }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function isAllDigits(argvalue) {
+                argvalue = argvalue.toString();
+                var validChars = "0123456789";
+                var startFrom = 0;
+                if (argvalue.substring(0, 2) == "0x") {
+                   validChars = "0123456789abcdefABCDEF";
+                   startFrom = 2;
+                } else if (argvalue.charAt(0) == "0") {
+                   validChars = "01234567";
+                   startFrom = 1;
+                }
+                for (var n = 0; n < argvalue.length; n++) {
+                    if (validChars.indexOf(argvalue.substring(n, n+1)) == -1) return false;
+                }
+                return true;
+            }
+function validateFloat(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oFloat = new FloatValidations();
+                for (x in oFloat) {
+                	var field = form[oFloat[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                    	var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+							    value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+	                        var iValue = parseFloat(value);
+	                        if (isNaN(iValue)) {
+	                            if (i == 0) {
+	                                focusField = field;
+	                            }
+	                            fields[i++] = oFloat[x][1];
+	                            bValid = false;
+	                        }
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRequired(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRequired = new required();
+                for (x in oRequired) {
+                	var field = form[oRequired[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'file' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si > 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = trim(field.value);
+						}
+                        
+                        if (value == '') {
+                        
+	                        if (i == 0) {
+	                            focusField = field;
+	                        }
+	                        fields[i++] = oRequired[x][1];
+	                        bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   alert(fields.join('\n'));
+                   focusField.focus();
+                }
+                return bValid;
+            }
+            
+ function trim(inputString)
+{
+	// Removes leading and trailing spaces from the passed string. Also
+	// removes consecutive spaces and replaces it with one space.
+	var retValue = inputString;
+
+	if(retValue!="")
+	{
+		retValue = String(retValue);
+		var ch = retValue.substring(0, 1);
+		while (ch == " ")
+		{
+			// Check for spaces at the beginning of the string
+			retValue = retValue.substring(1, retValue.length);
+			ch = retValue.substring(0, 1);
+		}
+
+		ch = retValue.substring(retValue.length-1, retValue.length);
+		while (ch == " ")
+		{
+			// Check for spaces at the end of the string
+			retValue = retValue.substring(0, retValue.length-1);
+			ch = retValue.substring(retValue.length-1, retValue.length);
+		}
+
+		while (retValue.indexOf("  ") != -1)
+		{
+			// Note that there are two spaces in the string - look for multiple spaces within the string
+			retValue = retValue.substring(0, retValue.indexOf("  ")) + retValue.substring(retValue.indexOf("  ")+1, retValue.length); // Again, there are two spaces in each of the strings
+		}
+	}
+	return retValue; // Return the trimmed string back to the user
+} // Ends the "trim" function
+function validateShort(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oShort = new ShortValidations();
+                for (x in oShort) {
+                	var field = form[oShort[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+	                        var iValue = parseInt(value);
+	                        if (isNaN(iValue) || !(iValue >= -32768 && iValue <= 32767)) {
+	                            if (i == 0) {
+	                                focusField = field;
+	                            }
+	                            fields[i++] = oShort[x][1];
+	                            bValid = false;
+	                       }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateAdhoc(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRequired = new adhoc();
+                for (x in oRequired) {
+                	//var field = form[oRequired[x][1]];
+                	 fields[0] = oRequired[x][1];
+	                        bValid = false;
+                  }
+                
+                alert(fields.join('\n'));
+                return bValid;
+
+            }
+function validateCreditCard(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCreditCard = new creditCard();
+                for (x in oCreditCard) {
+                    if ((form[oCreditCard[x][0]].type == 'text' ||
+                         form[oCreditCard[x][0]].type == 'textarea') &&
+                        (form[oCreditCard[x][0]].value.length > 0)) {
+                        if (!luhnCheck(form[oCreditCard[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oCreditCard[x][0]];
+                            }
+                            fields[i++] = oCreditCard[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: http://www.ling.nwu.edu/~sburke/pub/luhn_lib.pl
+             */
+            function luhnCheck(cardNumber) {
+                if (isLuhnNum(cardNumber)) {
+                    var no_digit = cardNumber.length;
+                    var oddoeven = no_digit & 1;
+                    var sum = 0;
+                    for (var count = 0; count < no_digit; count++) {
+                        var digit = parseInt(cardNumber.charAt(count));
+                        if (!((count & 1) ^ oddoeven)) {
+                            digit *= 2;
+                            if (digit > 9) digit -= 9;
+                        };
+                        sum += digit;
+                    };
+                    if (sum == 0) return false;
+                    if (sum % 10 == 0) return true;
+                };
+                return false;
+            }
+
+            function isLuhnNum(argvalue) {
+                argvalue = argvalue.toString();
+                if (argvalue.length == 0) {
+                    return false;
+                }
+                for (var n = 0; n < argvalue.length; n++) {
+                    if ((argvalue.substring(n, n+1) < "0") ||
+                        (argvalue.substring(n,n+1) > "9")) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateEmail(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oEmail = new email();
+                for (x in oEmail) {
+                    if ((form[oEmail[x][0]].type == 'text' ||
+                         form[oEmail[x][0]].type == 'textarea') &&
+                        (form[oEmail[x][0]].value.length > 0)) {
+                        if (!checkEmail(form[oEmail[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oEmail[x][0]];
+                            }
+                            fields[i++] = oEmail[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: Sandeep V. Tamhankar (stamhankar@hotmail.com),
+             * http://javascript.internet.com
+             */
+            function checkEmail(emailStr) {
+               if (emailStr.length == 0) {
+                   return true;
+               }
+               var emailPat=/^(.+)@(.+)$/;
+               var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";
+               var validChars="\[^\\s" + specialChars + "\]";
+               var quotedUser="(\"[^\"]*\")";
+               var ipDomainPat=/^(\d{1,3})[.](\d{1,3})[.](\d{1,3})[.](\d{1,3})$/;
+               var atom=validChars + '+';
+               var word="(" + atom + "|" + quotedUser + ")";
+               var userPat=new RegExp("^" + word + "(\\." + word + ")*$");
+               var domainPat=new RegExp("^" + atom + "(\\." + atom + ")*$");
+               var matchArray=emailStr.match(emailPat);
+               if (matchArray == null) {
+                   return false;
+               }
+               var user=matchArray[1];
+               var domain=matchArray[2];
+               if (user.match(userPat) == null) {
+                   return false;
+               }
+               var IPArray = domain.match(ipDomainPat);
+               if (IPArray != null) {
+                   for (var i = 1; i <= 4; i++) {
+                      if (IPArray[i] > 255) {
+                         return false;
+                      }
+                   }
+                   return true;
+               }
+               var domainArray=domain.match(domainPat);
+               if (domainArray == null) {
+                   return false;
+               }
+               var atomPat=new RegExp(atom,"g");
+               var domArr=domain.match(atomPat);
+               var len=domArr.length;
+               if ((domArr[domArr.length-1].length < 2) ||
+                   (domArr[domArr.length-1].length > 3)) {
+                   return false;
+               }
+               if (len < 2) {
+                   return false;
+               }
+               return true;
+            }
+function validateMask(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMasked = new mask();
+                for (x in oMasked) {
+                    if ((form[oMasked[x][0]].type == 'text' ||
+                         form[oMasked[x][0]].type == 'textarea' ||
+                         form[oMasked[x][0]].type == 'password') &&
+                        (form[oMasked[x][0]].value.length > 0)) {
+                        if (!matchPattern(form[oMasked[x][0]].value, oMasked[x][2]("mask"))) {
+                            if (i == 0) {
+                                focusField = form[oMasked[x][0]];
+                            }
+                            fields[i++] = oMasked[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function matchPattern(value, mask) {
+               var bMatched = mask.exec(value);
+               if (!bMatched) {
+                   return false;
+               }
+               return true;
+            }
+
+//End --> 
+</script>
+
+ 
+<input type="hidden" name="hiddenOnwardUFromplacename" value="">
+<input type="hidden" name="hiddenOnwardUToplacename" value="">
+<input type="hidden" name="hiddenUserType" value="">
+<input type="hidden" name="hiddenUserMasterID" value="">
+<input type="hidden" name="hiddenOnwardTimeSlab">  
+<input type="hidden" name="hiddenOnwardServiceInfo" value="">    
+<input type="hidden" name="hiddenAction" value="SearchService">
+<input type="hidden" name="totalSeatsTodisplay" value="1">
+<input type="hidden" name="radOnewayOrReturnTrip" value="O"> 
+<input type="hidden" name="totalAdultSeatsTodisplay" value="1"> 
+<input type="hidden" name="totalChildSeatsTodisplay" value="0"> 
+<input type="hidden" name="hiddenTotalMales" value=""> 
+<input type="hidden" name="hiddenTotalFemales" value=""> 
+<input type="hidden" name="txtAdultMales" value="1"> 
+<input type="hidden" name="txtAdultFemales" value="0"> 
+<input type="hidden" name="txtChildMales" value="0"> 
+<input type="hidden" name="txtChildFemales" value="0">
+<input type="hidden" name="hiddenSeniorCitizenAge" value="">
+<input type="hidden" name="hiddenPickupPointName" value="">
+<input type="hidden" name="hiddenDropOffPointName" value="">
+<input type="hidden" name="hiddenConcessionName" value="">
+<input type="hidden" name="hiddenIdProofName" value=""> 
+<input type="hidden" name="hiddenCpcdID" value=""> 
+<input type="hidden" name="hiddenConcessionLookupID" value=""> 
+<input type="hidden" name="hiddenPickUpTime" value="">
+<input type="hidden" name="hiddenOnwardJourneyDate" value="13/12/2025"> 
+<input type="hidden" name="hiddenCurrentDate" value="13/12/2025"> 
+<input type="hidden" name="hiddenDifferentlyAbledSeatQuota" value=""> 
+<input type="hidden" name="hiddenDifferentlyAbledSeatStatus" value=""> 
+<input type="hidden" name="hiddenDifferentlyAbledSeatStatusReturn" value=""> 
+<input type="hidden" name="txtPickUpDate" value="">
+<input type="hidden" name="hiddenStartPlaceID" value="74">
+<input type="hidden" name="hiddenEndPlaceID" value="114">
+<input type="hidden" name="txtStartPlaceCode" value="TRI">
+<input type="hidden" name="txtEndPlaceCode" value="COI">
+<input type="hidden" name="hiddenStartPlaceName" value="TRICHY">
+<input type="hidden" name="hiddenEndPlaceName" value="COIMBATORE">
+<input type="hidden" name="matchStartPlace" value="TRICHY">
+<input type="hidden" name="matchEndPlace" value="COIMBATORE">
+<input type="hidden" name="txtJourneyDate" value="13/12/2025">
+<input type="hidden" name="hiddenMaxNoOfPassengers" value="16">
+<input type="hidden" name="hiddenMaxValidReservDate" value="">
+<input type="hidden" name="selectOnwardTimeSlab" value="00:00-23:59">
+<input type="hidden" name="selectStartPlace" value="TRI">
+<input type="hidden" name="selectEndPlace" value="COI">
+<input type="hidden" name="hiddenOnwardServiceID" value="">
+<input type="hidden" name="hiddenClassID" value="">
+<input type="hidden" name="hiddenClassID" value="">
+<input type="hidden" name="hiddenStartPoint" value="">
+<input type="hidden" name="hiddenSeatNumbersTodisplay" value="">
+<input type="hidden" value="" id="seatNumbersTodisplay" name="seatNumbersTodisplay"/>
+<input type="hidden" value="" id="seatNumbersTodisplayN" name="seatNumbersTodisplayN"/>
+<input type="hidden" value="" id="hiddenCount" name="hiddenCount"/>
+<input type="hidden" name="hiddenNewLadiesSeatList" value="">
+
+<!-- NEW TEMPLETE -->
+<input type="hidden" name="hiddenNewPassengers" value="">
+<input type="hidden" name="hiddenNewAges" value="">
+<input type="hidden" name="hiddenNewSeatNOs" value="">
+<input type="hidden" name="hiddenRNewSeatNOs" value="">
+<input type="hidden" name="hiddenNewGenders" value="">
+<input type="hidden" name="hiddenNewACType" value="">
+<input type="hidden" name="hiddenNewOnwardPickupPointDetails" value="">
+<input type="hidden" name="hiddenNewOnwardDropOffPointDetails" value="">
+<input type="hidden" name="hiddenReturnJourneyDate" value="DD/MM/YYYY">
+
+<input type="hidden" name="hiddenNewReturnPickupPointDetails" value="">
+<input type="hidden" name="hiddenNewReturnDropOffPointDetails" value="">
+<input type="hidden" name="checkSingleLady" value="N">
+
+<input type="hidden" name="selectPickupPoint" value="">
+<input type="hidden" name="selectDropOffPoint" value="">
+<input type="hidden" name="hiddenNewMobileNO" value="">
+<input type="hidden" name="hiddenNewEmailID" value="">
+<input type="hidden" name="txtIdProofReference" value="">
+<input type="hidden" name="selectIdProof" value="">
+<input type="hidden" name="languageType" value="E">
+<input type="hidden" name="hiddenOnwardSelectedNewSeatNOs" value="">
+<input type="hidden" name="hiddenOnwardSelectedNewSeatNOsConversion" value="">
+
+
+<input type="hidden" name="hiddenReturnSelectedNewSeatNOs" value="">
+<input type="hidden" name="selectConcession" value="">
+<input type="hidden" name="chkAddOn" value="">
+<input type="hidden" name="lchkAddOn" value="">
+
+<input type="hidden" name="mtcSelectedBar" value="">
+<input type="hidden" name="coiSelectedBar" value="">
+
+<input type="hidden" name="hiddenOnwardSeatCount" value="">
+<input type="hidden" name="txtPicupPointTime" value="">
+<input type="hidden" name="txtReturnPicupPointTime" value="">
+<input type="hidden" name="hiddenPackageTrip" value="NO">
+</form>
+</body>
+</html>

@@ -1,0 +1,687 @@
+[
+  {
+    "value": "ALANKULAM",
+    "id": "",
+    "code": "ALA"
+  },
+  {
+    "value": "ANNAVASAL",
+    "id": "",
+    "code": "ANN"
+  },
+  {
+    "value": "ARANI",
+    "id": "",
+    "code": "ARA"
+  },
+  {
+    "value": "ARANI-TIRUPATHI",
+    "id": "",
+    "code": "ARA"
+  },
+  {
+    "value": "ARANTHANGI",
+    "id": "",
+    "code": "ARA"
+  },
+  {
+    "value": "ARIMALAM",
+    "id": "",
+    "code": "ARI"
+  },
+  {
+    "value": "ARUPPUKOTTAI",
+    "id": "",
+    "code": "ARU"
+  },
+  {
+    "value": "AVUDAIARKOIL",
+    "id": "",
+    "code": "AVU"
+  },
+  {
+    "value": "AVUDAIYAR KOIL",
+    "id": "",
+    "code": "AVU"
+  },
+  {
+    "value": "BANGALORE",
+    "id": "",
+    "code": "BAN"
+  },
+  {
+    "value": "BANGALORE (VIA-CHITTOOR)",
+    "id": "",
+    "code": "BAN"
+  },
+  {
+    "value": "BANGALORE(VIA-HOSUR)",
+    "id": "",
+    "code": "BAN"
+  },
+  {
+    "value": "BODI",
+    "id": "",
+    "code": "BOD"
+  },
+  {
+    "value": "CHENGANACHERRY",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHENNAI",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHENNAI (AVADI)",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHENNAI (TVTR)",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHENNAI (VIA CHITTOOR)",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHENNAI (VIA VELLORE)",
+    "id": "",
+    "code": "CHE"
+  },
+  {
+    "value": "CHIDAMBARAM",
+    "id": "",
+    "code": "CHI"
+  },
+  {
+    "value": "COIMBATORE",
+    "id": "",
+    "code": "COI"
+  },
+  {
+    "value": "CUMBAM",
+    "id": "",
+    "code": "CUM"
+  },
+  {
+    "value": "DEVAKOTTAI",
+    "id": "",
+    "code": "DEV"
+  },
+  {
+    "value": "DHARAPURAM",
+    "id": "",
+    "code": "DHA"
+  },
+  {
+    "value": "DHARMAPURI",
+    "id": "",
+    "code": "DHA"
+  },
+  {
+    "value": "DINDIGUL",
+    "id": "",
+    "code": "DIN"
+  },
+  {
+    "value": "ERNAKULAM",
+    "id": "",
+    "code": "ERN"
+  },
+  {
+    "value": "ERODE",
+    "id": "",
+    "code": "ERO"
+  },
+  {
+    "value": "ERUVADI",
+    "id": "",
+    "code": "ERU"
+  },
+  {
+    "value": "GANDARVAKOTTAI",
+    "id": "",
+    "code": "GAN"
+  },
+  {
+    "value": "GOBI",
+    "id": "",
+    "code": "GOB"
+  },
+  {
+    "value": "GUDALORE (OODY)",
+    "id": "",
+    "code": "GUD"
+  },
+  {
+    "value": "GUDALORE (OOTY)",
+    "id": "",
+    "code": "GUD"
+  },
+  {
+    "value": "GURUVAYUR",
+    "id": "",
+    "code": "GUR"
+  },
+  {
+    "value": "HOSUR",
+    "id": "",
+    "code": "HOS"
+  },
+  {
+    "value": "IDAYANKUDI",
+    "id": "",
+    "code": "IDA"
+  },
+  {
+    "value": "ILUPPUR",
+    "id": "",
+    "code": "ILU"
+  },
+  {
+    "value": "KALPAKKAM",
+    "id": "",
+    "code": "KAL"
+  },
+  {
+    "value": "KAMUDHI",
+    "id": "",
+    "code": "KAM"
+  },
+  {
+    "value": "KANYAKUMARI",
+    "id": "",
+    "code": "KAN"
+  },
+  {
+    "value": "KARAIKUDI",
+    "id": "",
+    "code": "KAR"
+  },
+  {
+    "value": "KARUNGAL",
+    "id": "",
+    "code": "KAR"
+  },
+  {
+    "value": "KARUR",
+    "id": "",
+    "code": "KAR"
+  },
+  {
+    "value": "KAZHUGUMALAI",
+    "id": "",
+    "code": "KAZ"
+  },
+  {
+    "value": "KEERAMANGALAM",
+    "id": "",
+    "code": "KEE"
+  },
+  {
+    "value": "KEEZHAKARAI",
+    "id": "",
+    "code": "KEE"
+  },
+  {
+    "value": "KODAIKANAL",
+    "id": "",
+    "code": "KOD"
+  },
+  {
+    "value": "KOLLAM",
+    "id": "",
+    "code": "KOL"
+  },
+  {
+    "value": "KOLLENCODE",
+    "id": "",
+    "code": "KOL"
+  },
+  {
+    "value": "KOTTARAKARA",
+    "id": "",
+    "code": "KOT"
+  },
+  {
+    "value": "KOVILPATTI",
+    "id": "",
+    "code": "KOV"
+  },
+  {
+    "value": "KOZHICODE",
+    "id": "",
+    "code": "KOZ"
+  },
+  {
+    "value": "KULASEKARAM",
+    "id": "",
+    "code": "KUL"
+  },
+  {
+    "value": "KULASEKARAPATTI",
+    "id": "",
+    "code": "KUL"
+  },
+  {
+    "value": "KULASEKARAPATTINAM",
+    "id": "",
+    "code": "KUL"
+  },
+  {
+    "value": "KULATHUR",
+    "id": "",
+    "code": "KUL"
+  },
+  {
+    "value": "KUMBAKONAM",
+    "id": "",
+    "code": "KUM"
+  },
+  {
+    "value": "KUMILI",
+    "id": "",
+    "code": "KUM"
+  },
+  {
+    "value": "KUTTAM",
+    "id": "",
+    "code": "KUT"
+  },
+  {
+    "value": "MADURAI",
+    "id": "",
+    "code": "MAD"
+  },
+  {
+    "value": "MANALMELKUDI",
+    "id": "",
+    "code": "MAN"
+  },
+  {
+    "value": "MANNACHANALLUR",
+    "id": "",
+    "code": "MAN"
+  },
+  {
+    "value": "MANNARKUDI",
+    "id": "",
+    "code": "MAN"
+  },
+  {
+    "value": "MARTHANDAM",
+    "id": "",
+    "code": "MAR"
+  },
+  {
+    "value": "MAYILADUTHURAI",
+    "id": "",
+    "code": "MAY"
+  },
+  {
+    "value": "MEEMISAL-TONDI-",
+    "id": "",
+    "code": "MEE"
+  },
+  {
+    "value": "MELUR",
+    "id": "",
+    "code": "MEL"
+  },
+  {
+    "value": "METTUPALAYAM",
+    "id": "",
+    "code": "MET"
+  },
+  {
+    "value": "MYLADUTHURAI",
+    "id": "",
+    "code": "MYL"
+  },
+  {
+    "value": "NAGAPATTINAM",
+    "id": "",
+    "code": "NAG"
+  },
+  {
+    "value": "NAGERCOIL",
+    "id": "",
+    "code": "NAG"
+  },
+  {
+    "value": "NAKUDI",
+    "id": "",
+    "code": "NAK"
+  },
+  {
+    "value": "NAMAKKAL",
+    "id": "",
+    "code": "NAM"
+  },
+  {
+    "value": "NATHAM",
+    "id": "",
+    "code": "NAT"
+  },
+  {
+    "value": "OOTY",
+    "id": "",
+    "code": "OOT"
+  },
+  {
+    "value": "OPPILAN",
+    "id": "",
+    "code": "OPP"
+  },
+  {
+    "value": "PALANI",
+    "id": "",
+    "code": "PAL"
+  },
+  {
+    "value": "PALLAPATTI",
+    "id": "",
+    "code": "PAL"
+  },
+  {
+    "value": "PAPANASAM-TNV",
+    "id": "",
+    "code": "PAP"
+  },
+  {
+    "value": "PARAMAKUDI",
+    "id": "",
+    "code": "PAR"
+  },
+  {
+    "value": "PATHANAMTHITTA",
+    "id": "",
+    "code": "PAT"
+  },
+  {
+    "value": "PATTUKOTTAI",
+    "id": "",
+    "code": "PAT"
+  },
+  {
+    "value": "PERAIYUR",
+    "id": "",
+    "code": "PER"
+  },
+  {
+    "value": "PERIYAKULAM",
+    "id": "",
+    "code": "PER"
+  },
+  {
+    "value": "PERIYAPATTINAM",
+    "id": "",
+    "code": "PER"
+  },
+  {
+    "value": "POLLACHI",
+    "id": "",
+    "code": "POL"
+  },
+  {
+    "value": "PONNAMARAVATHY",
+    "id": "",
+    "code": "PON"
+  },
+  {
+    "value": "POOMBUHAR",
+    "id": "",
+    "code": "POO"
+  },
+  {
+    "value": "PUDUCHERRY",
+    "id": "",
+    "code": "PUD"
+  },
+  {
+    "value": "PUDUKKOTTAI",
+    "id": "",
+    "code": "PUD"
+  },
+  {
+    "value": "PUDUKOTTAI",
+    "id": "",
+    "code": "PUD"
+  },
+  {
+    "value": "PULLAMBADI",
+    "id": "",
+    "code": "PUL"
+  },
+  {
+    "value": "RAMESWARAM",
+    "id": "",
+    "code": "RAM"
+  },
+  {
+    "value": "RAMNAD",
+    "id": "",
+    "code": "RAM"
+  },
+  {
+    "value": "SALEM",
+    "id": "",
+    "code": "SAL"
+  },
+  {
+    "value": "SANKARANKOIL",
+    "id": "",
+    "code": "SAN"
+  },
+  {
+    "value": "SATTAN KULAM",
+    "id": "",
+    "code": "SAT"
+  },
+  {
+    "value": "SAYALKUDI",
+    "id": "",
+    "code": "SAY"
+  },
+  {
+    "value": "SHENCOTTAH",
+    "id": "",
+    "code": "SHE"
+  },
+  {
+    "value": "SIVAGANGAI",
+    "id": "",
+    "code": "SIV"
+  },
+  {
+    "value": "SIVAKASI",
+    "id": "",
+    "code": "SIV"
+  },
+  {
+    "value": "SRIRANGAM",
+    "id": "",
+    "code": "SRI"
+  },
+  {
+    "value": "SRIVILLIPUTHUR",
+    "id": "",
+    "code": "SRI"
+  },
+  {
+    "value": "TAMBARAM",
+    "id": "",
+    "code": "TAM"
+  },
+  {
+    "value": "THANJAVUR",
+    "id": "",
+    "code": "THA"
+  },
+  {
+    "value": "THENI",
+    "id": "",
+    "code": "THE"
+  },
+  {
+    "value": "THYSAYANVILAI",
+    "id": "",
+    "code": "THY"
+  },
+  {
+    "value": "TIRUCHENDUR",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUMANGALAM",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUMAYAM",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUNALLAR",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUNELVELI",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUPATHI",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUPATHURRMD",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUPPUR",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUTHANGAL",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUTHURAIPOOND",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUVANMIYUR",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TIRUVARUR",
+    "id": "",
+    "code": "TIR"
+  },
+  {
+    "value": "TNV (PAPANASAM)",
+    "id": "",
+    "code": "TNV"
+  },
+  {
+    "value": "TONDI VIA MIMISAL",
+    "id": "",
+    "code": "TON"
+  },
+  {
+    "value": "TRICHY",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TRICHY (SRR)",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TRICHY(BHEL)",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TRICHY-BHEL",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TRISSUR",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TRIVANDRUM",
+    "id": "",
+    "code": "TRI"
+  },
+  {
+    "value": "TUTICORIN",
+    "id": "",
+    "code": "TUT"
+  },
+  {
+    "value": "UDANKUDI",
+    "id": "",
+    "code": "UDA"
+  },
+  {
+    "value": "UDUMALPET",
+    "id": "",
+    "code": "UDU"
+  },
+  {
+    "value": "USILAMPATTI",
+    "id": "",
+    "code": "USI"
+  },
+  {
+    "value": "VEDARANYAM",
+    "id": "",
+    "code": "VED"
+  },
+  {
+    "value": "VEDASANDUR",
+    "id": "",
+    "code": "VED"
+  },
+  {
+    "value": "VELANKANNI",
+    "id": "",
+    "code": "VEL"
+  },
+  {
+    "value": "VELLORE",
+    "id": "",
+    "code": "VEL"
+  },
+  {
+    "value": "VILLUPURAM",
+    "id": "",
+    "code": "VIL"
+  },
+  {
+    "value": "VIRUDHUNAGAR",
+    "id": "",
+    "code": "VIR"
+  }
+]

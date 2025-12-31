@@ -1,0 +1,22 @@
+[
+    {
+        "from": "Trichy",
+        "to": "Chennai",
+        "journeyDate": "Daily",
+        "source": "TamilVandi",
+        "depotName": "TNSTC",
+        "serviceType": "🚌 3 X 2",
+        "dep": "12:10 am",
+        "_id": "TNSTC_12:10 am_Trichy_Chennai"
+    },
+    {
+        "from": "Trichy",
+        "to": "Chennai",
+        "journeyDate": "Daily",
+        "source": "TamilVandi",
+        "depotName": "SETC",
+        "serviceType": "🚌 ULTRA DELUXE",
+        "dep": "12:10 am",
+        "_id": "SETC_12:10 am_Trichy_Chennai"
+    }
+]

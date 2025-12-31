@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map Zoom Demo</title>
+    <title>BUS route optimiser</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -240,6 +240,11 @@
             <div class="card shadow mb-3">
                 <div class="card-header bg-dark text-white">
                     <h3>Bus Route Finder</h3>
+                     <a href="https://hemanthpulicharla.pythonanywhere.com" target="_blank" 
+           style="color: #ffc107; text-decoration: none; font-size: 0.9rem; font-weight: 600;"
+           onmouseover="this.style.color='#ffeb3b'"
+           onmouseout="this.style.color='#ffc107'">
+            ⚡ Hemanth Pulicharla</a>
                 </div>
                 <div class="card-body">
                     <p>Select locations to find buses and routes.</p>
@@ -329,6 +334,8 @@
         let tocoord=null;
         var fromApsrtcId;
         var toApsrtcId;
+        var fromState = null;  // ADD
+        var toState = null;
 
         let debounceTimer;
 
@@ -352,6 +359,20 @@
                 suggestions.forEach(item => {
                     const div=document.createElement('a');
                     div.className = 'list-group-item list-group-item-action';
+                    let stateBadge = '';
+    if (item.state === 'KSRTC') {
+        stateBadge = '<span class="badge bg-success ms-2">Kerala</span>';
+    } else if (item.state === 'TNSTC') {
+        stateBadge = '<span class="badge bg-danger ms-2">Tamil Nadu</span>';
+    }else if (item.state === 'KSRTC-KA') {
+        stateBadge = '<span class="badge bg-warning text-dark ms-2">Karnataka</span>';
+    } 
+    else if (item.state === 'TGSRTC') {
+        stateBadge = '<span class="badge bg-dark ms-2" style="color:#ffc107;">Telangana</span>';
+    }
+    else {
+        stateBadge = '<span class="badge bg-primary ms-2">Andhra Pradesh</span>';
+    }
                     div.innerText=item.label;
                     div.onclick=()=>Setlocation(item,type);
                     suggestionBox.appendChild(div);
@@ -365,51 +386,64 @@
         },300)
     }
 
-    async function Setlocation(item,type){
-        document.getElementById(type+'Input').value=item.label;
-        document.getElementById(type +'Suggestions').innerHTML='';
+async function Setlocation(item, type) {
+        document.getElementById(type + 'Input').value = item.label;
+        document.getElementById(type + 'Suggestions').innerHTML = '';
 
-
-        if(type === 'from'){
+        if (type === 'from') {
             fromApsrtcId = null;
-                fromcoord=item.coords;
-
-        }
-        else{
-             toApsrtcId = null;
-            tocoord=item.coords;
-        }
-
-        try {
-            const response = await fetch('/api/resolve-apsrtc-id', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ address: item.label })
-            });
-
-            const result = await response.json();
-
-            if (result.id) {
-                if (type === 'from') fromApsrtcId = result.id;
-                else toApsrtcId = result.id;
-
-                console.log(`[${type.toUpperCase()}] ID Found: ${result.id} (${result.match})`);
-            } else {
-                console.warn(`[${type.toUpperCase()}] No APSRTC ID match.`);
-                if (type === 'from') fromApsrtcId = null;
-                else toApsrtcId = null;
-            }
-
-        } catch (err) {
-            console.error("Error fetching APSRTC ID:", err);
+            fromcoord = item.coords;
+            fromState = item.state;
+        } else {
+            toApsrtcId = null;
+            tocoord = item.coords;
+            toState = item.state;
         }
 
-        if(fromcoord && tocoord){
-            loadRoute()
+        // --- APSRTC LOGIC ---
+        if (item.state === 'APSRTC') {
+            try {
+                const response = await fetch('/api/resolve-apsrtc-id', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ address: item.label, state: item.state })
+                });
+                const result = await response.json();
+                if (result.id) {
+                    if (type === 'from') fromApsrtcId = result.id;
+                    else toApsrtcId = result.id;
+                }
+            } catch (err) { console.error("AP Error", err); }
         } 
-        if (fromApsrtcId && toApsrtcId) {
-            searchBuses()
+        
+        // --- NEW TGSRTC LOGIC (Fixing the ID mismatch) ---
+        else if (item.state === 'TGSRTC') {
+            console.log("Resolving ID from Local TGSRTC DB...");
+            try {
+                const response = await fetch('/api/tgsrtc/resolve-id', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ address: item.label })
+                });
+                
+                const result = await response.json();
+                
+                if (result.id) {
+                    if (type === 'from') {
+                        fromApsrtcId = result.id; // Using same variable to store ID
+                        console.log(`FROM TG ID: ${result.id} (${result.match})`);
+                    } else {
+                        toApsrtcId = result.id;
+                        console.log(`TO TG ID: ${result.id} (${result.match})`);
+                    }
+                } else {
+                    alert("Stop not found in local GTFS database. Try a main bus station name.");
+                }
+            } catch (err) { console.error("TG Error", err); }
         }
+
+        if (fromcoord && tocoord) { loadRoute(); }
+        if (fromState && toState) { searchBuses(); }
     }
     function toggleShadeDetails(shade) {
     let detailsDiv = document.getElementById('shadeDetailsExpand');
@@ -582,39 +616,121 @@ async function viewStops(docId) {
         document.getElementById('stopsLoading').style.display = 'none';
         document.getElementById('stopsTimeline').innerHTML = '<div class="alert alert-danger">Error loading details.</div>';
     }
-} async function searchBuses() {
+} 
+async function searchBuses() {
             const resultsDiv = document.getElementById('busResults');
-            resultsDiv.innerHTML = ''; 
+            resultsDiv.innerHTML = '<div class="text-center py-3"><div class="spinner-border text-danger"></div><p>Fetching Buses...</p></div>'; 
             
-            if(!fromApsrtcId || !toApsrtcId) {
-                console.log("Waiting for both IDs...");
-                resultsDiv.innerHTML = '<div class="alert alert-warning">Please select both locations</div>';
-                return;
-            }
-
-            // Show Spinner
-            resultsDiv.innerHTML = `
-                <div class="text-center py-3">
-                    <div class="spinner-border text-danger" role="status"></div>
-                    <p class="mt-2 text-muted">Fetching Live Buses...</p>
-                </div>`;
+            const sourceNameRaw = document.getElementById('fromInput').value;
+            const destNameRaw = document.getElementById('toInput').value;
+            const sourceCity = sourceNameRaw.split(',')[0].trim();
+            const destCity = destNameRaw.split(',')[0].trim();
+            
 
             try {
-                const response = await fetch('/api/find-buses', {
+                let apiUrl,response,rawResponse,busData,payload;
+                 //apiUrl = '/api/find-buses';
+                 if (fromState === 'KSRTC' || toState === 'KSRTC'){
+                    apiUrl='api/find-buses-kerala';
+                payload = {
+                fromName: document.getElementById('fromInput').value,
+                toName: document.getElementById('toInput').value
+            };
+            console.log('Searching Kerala buses:', payload);
+            
+            response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        }
+        else if (fromState === 'TNSTC' || toState === 'TNSTC') {
+            console.log('Using TNSTC API');
+            apiUrl = '/api/find-buses-tnstc';
+            payload = {
+                fromName: document.getElementById('fromInput').value,
+                toName: document.getElementById('toInput').value
+            };
+            
+            console.log('TNSTC Payload:', JSON.stringify(payload, null, 2));
+
+            
+            response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            console.log('Response Status:', response.status);
+             if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error Response:', errorText);
+        throw new Error(`Server returned ${response.status}: ${errorText}`);
+    }
+        }
+    else if (fromState === 'TGSRTC' || toState === 'TGSRTC') {
+    console.log('🟣 Using TGSRTC Local DB');
+    apiUrl = '/api/find-buses-tgsrtc';
+    payload = {
+        fromId: fromApsrtcId,
+        toId: toApsrtcId
+    };
+
+    response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+}
+        else if (fromState === 'KSRTC-KA' || toState === 'KSRTC-KA') {
+    console.log(' Using KSRTC Karnataka API');
+    apiUrl = '/api/find-buses-ksrtc-karnataka';
+    
+    const today = new Date();
+    const dateStr = today.toISOString().split('T')[0];
+
+    payload = {
+        fromName: document.getElementById('fromInput').value,
+        toName: document.getElementById('toInput').value,
+        journeyDate: dateStr
+    };
+
+    response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+}
+            else if(fromState === 'APSRTC' && toState === 'APSRTC'){
+                console.log('Using APSRTC API');
+                if(!fromApsrtcId || !toApsrtcId) {
+                console.log("Waiting for both IDs...");
+                resultsDiv.innerHTML = '<div class="alert alert-warning">Spelling mistake or this state is yet to be integrated.</div>';
+                return;
+            }
+            apiUrl='/api/find-buses'
+        payload = {
+            fromId: fromApsrtcId,
+            toId: toApsrtcId,
+            fromName: sourceCity,
+            toName: destCity
+        }
+                response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        fromId: fromApsrtcId,
-                        toId: toApsrtcId
-                    })
+                    body: JSON.stringify(payload)
                 });
-
-                const rawResponse = await response.json();
-
-                // --- FIX IS HERE ---
-                // Check if the response has a .data property (like your JSON shows)
-                // or if it is the array itself.
-                let busData = [];
+            }
+            else {
+            console.log('Not known state combination');
+            resultsDiv.innerHTML = '<div class="alert alert-warning">This route combination is not yet supported.</div>';
+            return;
+        }
+                rawResponse = await response.json();
+                busData = [];
+                 if (rawResponse.error) {
+            resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${rawResponse.error}</div>`;
+            return;
+        }
                 if (rawResponse.data && Array.isArray(rawResponse.data)) {
                     busData = rawResponse.data;
                 } else if (Array.isArray(rawResponse)) {
@@ -641,62 +757,329 @@ async function viewStops(docId) {
                         if (a.isPast === b.isPast) return a.minutes - b.minutes;
                         return a.isPast ? 1 : -1;
                     });
-                    let html = `<h6 class="text-muted mb-3 px-2">Found ${busData.length} buses from ${busData.oprsNo}</h6>`;
                     
-                    busData.forEach(bus => {
-                        const cardClass = bus.isPast ? 'bus-card departed' : 'bus-card';
-                         let displayFare = bus.fare;
-                    if (displayFare === 'N/A') {
-                    displayFare = `~${rawResponse.averageFare}`;
-                    }
-                        
-                    html += `
-                    <div class="${cardClass}">
-                        <div class="bus-header">
-                            <div><div class='text-muted fw-bold small'>Bus Service number</div><div class="service-code">${bus.oprsNo}</div></div>
-                            <div class="service-type">${bus.serviceType}</div>
-                        </div>
-                        
-                        <div class="bus-body">
-                            <div class="time-group">
-                                <div class="time-label">Departs</div>
-                                <div class="time-main">${bus.serviceStartTime}</div>
-                            </div>
-                            
-                            <div class="journey-graphic">
-                                <div class="bus-icon-circle">🚌</div>
-                            </div>
-                            
-                            <div class="time-group">
-                                <div class="time-label">Arrives</div>
-                                <div class="time-main">${bus.serviceEndTime}</div>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
-        <span class="text-muted small">💺 Base Fare:</span>
-        <span class="fw-bold text-success" style="font-size: 1.1rem;">₹${displayFare}</span>
-        <button class="btn btn-sm border btn-light rounded-pill px-2 py-1" style="font-size:0.75 rem; font-weight: 600;" onclick="viewStops('${bus.serviceDocId}')">
-                View Stops
-            </button>
-    </div>
-                    </div>`;
-
-
-                })
-
-                 resultsDiv.innerHTML = html;
-                }
-                else {
-                    resultsDiv.innerHTML = `<div class="alert alert-secondary text-center">No direct buses found.</div>`;
+                    
+          busData.forEach(bus => {
+                if (!bus.serviceStartTime || bus.serviceStartTime === "N/A") {
+                    bus.minutes = 9999;
+                    bus.isPast = true;
+                    return;
                 }
 
-            } catch (error) {
-                console.error("Bus search failed:", error);
-                resultsDiv.innerHTML = `<div class="alert alert-danger">Error fetching data.</div>`;
+                let timeStr = bus.serviceStartTime.trim();
+                let hours = 0, minutes = 0;
+                
+                // Check if AM/PM format
+                const ampm = timeStr.toLowerCase().includes('am') || timeStr.toLowerCase().includes('pm');
+                if (ampm) {
+                    const isPM = timeStr.toLowerCase().includes('pm');
+                    const cleanTime = timeStr.replace(/am|pm/gi, '').trim();
+                    const parts = cleanTime.split(':');
+                    hours = parseInt(parts[0]);
+                    minutes = parts.length > 1 ? parseInt(parts[1]) : 0;
+                    if (isPM && hours !== 12) hours += 12;
+                    if (!isPM && hours === 12) hours = 0;
+                } else {
+                    const parts = timeStr.split(':');
+                    hours = parseInt(parts[0]);
+                    minutes = parts.length > 1 ? parseInt(parts[1]) : 0;
+                }
+
+                bus.minutes = hours * 60 + minutes;
+                bus.isPast = bus.minutes < currentMinutes;
+            });
+
+            busData.sort((a, b) => {
+                if (a.isPast === b.isPast) return a.minutes - b.minutes;
+                return a.isPast ? 1 : -1;
+            });
+
+            let html = `<h6 class="text-muted mb-3 px-2">Found ${busData.length} buses from <strong> ${sourceCity}</strong></h6>`;
+            if (rawResponse.totalPages) {
+                html += ` (${rawResponse.totalPages} pages)`;
             }
+            html += `</h6>`;
+
+            busData.forEach(bus => {
+                const cardClass = bus.isPast ? 'bus-card departed' : 'bus-card';
+                
+                let displayFare = "N/A";
+                if (bus.fare && bus.fare !== "N/A") {
+                    displayFare = `₹${bus.fare}`;
+                } else if (rawResponse.averageFare) {
+                    displayFare = `~₹${rawResponse.averageFare}`;
+                }
+                let arrivalTime = bus.serviceEndTime;
+                if ((!arrivalTime || arrivalTime === "N/A") && bus.duration && bus.duration !== "N/A") {
+                    arrivalTime = "Check Duration";
+                }
+
+
+            let stopsButton = '';
+            
+            if (fromState === 'APSRTC') {
+
+                if (bus.serviceDocId && bus.serviceDocId !== 'null') {
+                    stopsButton = `
+                    <button class="btn btn-sm border btn-light rounded-pill px-2 py-1" 
+                            style="font-size:0.75rem; font-weight: 600;" 
+                            onclick="viewStops('${bus.serviceDocId}')">
+                        View Stops
+                    </button>`;
+                } else {
+                    stopsButton = `<span class="text-muted small">Stops N/A</span>`;
+                }
+            } else if (fromState === 'KSRTC' || toState === 'KSRTC')  {
+                    if (bus.serviceDocId && bus.serviceDocId !== 'null') {
+                    stopsButton = `
+                    <button class="btn btn-sm border btn-light rounded-pill px-2 py-1" 
+                            style="font-size:0.75rem; font-weight: 600;" 
+                            onclick="viewKeralaBusStops('${bus.serviceDocId}')">
+                        View Stops
+                    </button>`;
+                } else {
+                    stopsButton = `<span class="text-muted small">Stops N/A</span>`;
+                }
+            }
+            else if (fromState === 'KSRTC-KA' || toState === 'KSRTC-KA') {
+    if (bus.serviceDocId && bus.serviceDocId !== 'null') {
+        stopsButton = `
+        <button class="btn btn-sm border btn-warning bg-light rounded-pill px-2 py-1" 
+                style="font-size:0.75rem; font-weight: 600;"
+                onclick="viewKsrtcKaStops('${bus.serviceDocId}')">
+            View Route
+        </button>`;
+    } else {
+        stopsButton = `<span class="text-muted small">Route Info N/A</span>`;
+    }
+}
+
+             else if (fromState === 'TNSTC' || toState === 'TNSTC') {
+                    stopsButton = `<span class="text-muted small">⏳ Stops coming soon</span>`;
+                }
+                else if (fromState === 'KSRTC-KA' || toState === 'KSRTC-KA') {
+    stopsButton = `<span class="badge bg-light text-dark border">Amenities in details</span>`;
+}
+
+
+
+
+html += `
+<div class="${cardClass}">
+    <div class="bus-header">
+        <div>
+            <div class='text-muted fw-bold small'>Bus Service</div>
+            <div class="service-code">${bus.oprsNo || 'N/A'}</div>
+        </div>
+        <div class="service-type">${bus.serviceType || 'BUS'}</div>
+    </div>
+    
+    <div class="bus-body">
+        <div class="time-group">
+            <div class="time-label">Departs</div>
+            <div class="time-main">${bus.serviceStartTime}</div>
+        </div>
+        
+        <div class="journey-graphic">
+            <div class="bus-icon-circle">🚌</div>
+        </div>
+        
+        <div class="time-group">
+            <div class="time-label">Arrives</div>
+            <div class="time-main">${arrivalTime}</div>
+        </div>
+    </div>
+    
+    ${bus.duration && bus.duration !== 'N/A' ? `
+    <div class="mt-2 text-muted small">
+        <i class="bi bi-clock"></i> ${bus.duration}
+    </div>` : ''}
+    
+    ${bus.route ? `
+    <div class="mt-1 text-muted" style="font-size: 0.8rem;">
+        <i class="bi bi-signpost"></i> ${bus.route}
+    </div>` : ''}
+    
+    <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+        <span class="text-muted small">💵 Fare:</span>
+        <span class="fw-bold text-success" style="font-size: 1.1rem;">${displayFare}</span>
+        ${stopsButton}
+    </div>
+</div>`;
+            });
+
+            resultsDiv.innerHTML = html;
+        } else {
+            resultsDiv.innerHTML = `<div class="alert alert-secondary text-center">No buses found.</div>`;
         }
+
+    } catch (error) {
+        console.error("Bus search failed:", error);
+        resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+    }
+}
+
+async function viewKeralaBusStops(detailUrl) {
+    console.log('Fetching stops from:', detailUrl); // Debug log
+    
+    if (!detailUrl || detailUrl === 'null' || detailUrl === 'undefined') {
+        alert('Bus stop information not available for this service.');
+        return;
+    }
+    
+    const stopsModal = new bootstrap.Modal(document.getElementById('stopsModal'));
+    stopsModal.show();
+    
+    document.getElementById('stopsLoading').style.display = 'block';
+    document.getElementById('stopsTimeline').innerHTML = '';
+
+    try {
+        const response = await fetch('/api/get-kerala-bus-stops', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ detailUrl: detailUrl })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const responseData = await response.json();
+        console.log('Stops data:', responseData); // Debug log
+        
+        document.getElementById('stopsLoading').style.display = 'none';
+        
+        const stopsList = responseData.data || [];
+
+        if (stopsList.length === 0) {
+            document.getElementById('stopsTimeline').innerHTML = 
+                '<p class="text-center text-muted">No stops information available.</p>';
+            return;
+        }
+
+        let timelineHtml = '';
+        stopsList.forEach((stop, index) => {
+            const stopName = stop.placeName || "Unknown Stop";
+            const time = stop.scheduleArrTime || "--:--";
+            
+            timelineHtml += `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    ${time !== '--:--' ? `<div class="timeline-time">${time}</div>` : ''}
+                    <div class="timeline-content">
+                        <strong>${index + 1}. ${stopName}</strong>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('stopsTimeline').innerHTML = timelineHtml;
+
+    } catch (error) {
+        console.error("Error fetching stops:", error);
+        document.getElementById('stopsLoading').style.display = 'none';
+        document.getElementById('stopsTimeline').innerHTML = 
+            `<div class="alert alert-danger">Error loading stops: ${error.message}</div>`;
+    }
+}
+
+async function viewKsrtcKaStops(routeCode) {
+    const stopsModal = new bootstrap.Modal(document.getElementById('stopsModal'));
+    stopsModal.show();
+    
+    document.getElementById('stopsLoading').style.display = 'block';
+    document.getElementById('stopsTimeline').innerHTML = '';
+
+    try {
+        const response = await fetch('/api/get-ksrtc-ka-stops', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ routeCode: routeCode })
+        });
+        
+        const responseData = await response.json();
+        document.getElementById('stopsLoading').style.display = 'none';
+        
+        const stopsList = responseData.data || [];
+
+        if (stopsList.length === 0) {
+            document.getElementById('stopsTimeline').innerHTML = '<p class="text-center text-muted">No intermediate stops information available.</p>';
+            return;
+        }
+
+        let timelineHtml = '';
+        
+        stopsList.forEach((stop) => {
+            const stopName = stop.placeName;
+            timelineHtml += `
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #ffc107; border-color: #fff;"></div>
+                    <div class="timeline-time">Stop ${stop.seqNo}</div>
+                    <div class="timeline-content">
+                        <strong>${stopName}</strong>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('stopsTimeline').innerHTML = timelineHtml;
+
+    } catch (error) {
+        console.error("Error fetching KSRTC stops:", error);
+        document.getElementById('stopsLoading').style.display = 'none';
+        document.getElementById('stopsTimeline').innerHTML = '<div class="alert alert-danger">Error loading route details.</div>';
+    }
+}
+async function viewKsrtcKaStops(routeCode) {
+    const stopsModal = new bootstrap.Modal(document.getElementById('stopsModal'));
+    stopsModal.show();
+    
+    document.getElementById('stopsLoading').style.display = 'block';
+    document.getElementById('stopsTimeline').innerHTML = '';
+
+    try {
+        const response = await fetch('/api/get-ksrtc-ka-stops', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ routeCode: routeCode })
+        });
+        
+        const responseData = await response.json();
+        document.getElementById('stopsLoading').style.display = 'none';
+        
+        const stopsList = responseData.data || [];
+
+        if (stopsList.length === 0) {
+            document.getElementById('stopsTimeline').innerHTML = '<p class="text-center text-muted">No intermediate stops information available.</p>';
+            return;
+        }
+
+        let timelineHtml = '';
+        
+        stopsList.forEach((stop) => {
+            const stopName = stop.placeName;
+            
+            // This API doesn't give time, so we show sequence number or just a dot
+            timelineHtml += `
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #ffc107; border-color: #fff;"></div>
+                    <div class="timeline-time">Stop ${stop.seqNo}</div>
+                    <div class="timeline-content">
+                        <strong>${stopName}</strong>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('stopsTimeline').innerHTML = timelineHtml;
+
+    } catch (error) {
+        console.error("Error fetching KSRTC stops:", error);
+        document.getElementById('stopsLoading').style.display = 'none';
+        document.getElementById('stopsTimeline').innerHTML = '<div class="alert alert-danger">Error loading route details.</div>';
+    }
+}
     </script>
-<!-- Bus Stops Modal -->
 <div class="modal fade" id="stopsModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -709,7 +1092,6 @@ async function viewStops(docId) {
                     <div class="spinner-border text-danger" role="status"></div>
                 </div>
                 <div id="stopsTimeline" class="timeline">
-                    <!-- Stops will be injected here -->
                 </div>
             </div>
         </div>

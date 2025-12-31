@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify,render_template
 from flask_cors import CORS
 import requests
 import json
-from datetime import datetime
+from datetime import datetime , timedelta
 import math
+import time
+import sqlite3
 from bs4 import BeautifulSoup
 
 
@@ -30,7 +32,228 @@ try:
 except Exception as e:
     print(f"Error loading JSON: {e}")
     APSRTC_DATA = []
+try:
+    with open('placeid_kerela.json', 'r') as f:
+        KSRTC_DATA = json.load(f)
+        print(f"Loaded {len(KSRTC_DATA)} KSRTC stops.")
+except Exception as e:
+    print(f"Error loading KSRTC JSON: {e}")
+    KSRTC_DATA = []
+try:
+    with open('placeid_tnstc_template.json', 'r') as f:
+        TNSTC_DATA = json.load(f)
+        print(f"Loaded {len(TNSTC_DATA)} TNSTC stops.")
+except Exception as e:
+    print(f"Error loading TNSTC JSON: {e}")
+    TNSTC_DATA = []
 
+try:
+    with open('place_id_kr.json', 'r', encoding='utf-8') as f:
+        raw_kr_data = json.load(f)
+        KSRTC_KARNATAKA_MAP = {}
+        if raw_kr_data.get('success') and 'data' in raw_kr_data:
+            for k, v in raw_kr_data['data'].items():
+                city_name = v['Name'].strip().upper()
+                KSRTC_KARNATAKA_MAP[city_name] = v['ID']
+        print(f"Loaded {len(KSRTC_KARNATAKA_MAP)} KSRTC Karnataka stops.")
+except Exception as e:
+    print(f"Error loading KSRTC Karnataka JSON: {e}")
+    KSRTC_KARNATAKA_MAP = {}
+
+class TNSTCSessionManager:
+    def __init__(self):
+        self.session = requests.Session()
+        self.last_refresh_time = 0
+        self.refresh_interval = 15 * 60 
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "Accept": "text/html, */*; q=0.01",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Origin": "https://www.tnstc.in",
+            "Referer": "https://www.tnstc.in/OTRSOnline/jqreq.do?hiddenAction=SearchService",
+            "X-Requested-With": "XMLHttpRequest"
+        }
+        self.session.headers.update(self.headers)
+
+    def refresh_session(self):
+        try:
+            self.session.get("https://www.tnstc.in/home.do", timeout=10)
+            
+            self.session.get("https://www.tnstc.in/OTRSOnline/jqreq.do?hiddenAction=SearchService", timeout=10)
+            
+            self.last_refresh_time = datetime.now().timestamp()
+        except Exception as e:
+            print(f"Failed to refresh session: {e}")
+
+    def get_valid_session(self):
+        current_time = datetime.now().timestamp()
+        if (current_time - self.last_refresh_time) > self.refresh_interval:
+            self.refresh_session()    
+        return self.session
+
+
+class BusCache:
+    def __init__(self, db_path='bus_cache.db'):
+        self.db_path = db_path
+        self.init_db()
+    
+    def init_db(self): 
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS bus_searches (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                state TEXT NOT NULL,
+                from_place TEXT NOT NULL,
+                to_place TEXT NOT NULL,
+                search_date TEXT NOT NULL,
+                buses_data TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                hit_count INTEGER DEFAULT 1
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_search 
+            ON bus_searches(state, from_place, to_place, search_date)
+        ''')
+        
+        conn.commit()
+        conn.close()
+        print("Bus cache database started")
+    
+    def get_cached_buses(self, state, from_place, to_place, max_age_hours=2):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        today = datetime.now().strftime("%Y-%m-%d")
+        cutoff_time = datetime.now() - timedelta(hours=max_age_hours)
+        
+        cursor.execute('''
+            SELECT buses_data, created_at, hit_count, id
+            FROM bus_searches
+            WHERE state = ? 
+            AND from_place = ? 
+            AND to_place = ?
+            AND search_date = ?
+            AND created_at > ?
+            ORDER BY created_at DESC
+            LIMIT 1
+        ''', (state, from_place.upper(), to_place.upper(), today, cutoff_time.isoformat()))
+        
+        row = cursor.fetchone()
+        
+        if row:
+            buses_data, created_at, hit_count, cache_id = row
+            
+            cursor.execute('''
+                UPDATE bus_searches 
+                SET hit_count = hit_count + 1 
+                WHERE id = ?
+            ''', (cache_id,))
+            conn.commit()
+            
+            conn.close()
+            
+            print(f"CACHE HIT: {state} {from_place}→{to_place} (hits: {hit_count + 1}, age: {created_at})")
+            
+            return {
+                'cached': True,
+                'data': json.loads(buses_data),
+                'cached_at': created_at,
+                'hit_count': hit_count + 1
+            }
+        
+        conn.close()
+        print(f"CACHE MISS: {state} {from_place}→{to_place}")
+        return None
+    
+    def save_buses(self, state, from_place, to_place, buses_data):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        today = datetime.now().strftime("%Y-%m-%d")
+        
+        cursor.execute('''
+            SELECT id FROM bus_searches
+            WHERE state = ? 
+            AND from_place = ? 
+            AND to_place = ?
+            AND search_date = ?
+        ''', (state, from_place.upper(), to_place.upper(), today))
+        
+        existing = cursor.fetchone()
+        
+        if existing:
+            cursor.execute('''
+                UPDATE bus_searches
+                SET buses_data = ?,
+                    created_at = CURRENT_TIMESTAMP,
+                    hit_count = 1
+                WHERE id = ?
+            ''', (json.dumps(buses_data), existing[0]))
+            print(f"CACHE UPDATED: {state} {from_place}→{to_place}")
+        else:
+            cursor.execute('''
+                INSERT INTO bus_searches 
+                (state, from_place, to_place, search_date, buses_data)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (state, from_place.upper(), to_place.upper(), today, json.dumps(buses_data)))
+            print(f"CACHE SAVED: {state} {from_place}→{to_place}")
+        
+        conn.commit()
+        conn.close()
+    
+    def cleanup_old_cache(self, days_old=7):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cutoff_date = (datetime.now() - timedelta(days=days_old)).strftime("%Y-%m-%d")
+        
+        cursor.execute('''
+            DELETE FROM bus_searches
+            WHERE search_date < ?
+        ''', (cutoff_date,))
+        
+        deleted = cursor.rowcount
+        conn.commit()
+        conn.close()
+        
+        if deleted > 0:
+            print(f"Cleaned up {deleted} old cache entries")
+        return deleted
+bus_cache = BusCache()
+bus_cache.cleanup_old_cache(days_old=100)
+
+tnstc_manager = TNSTCSessionManager()
+TNSTC_PLACE_CODES = {}
+TNSTC_JSON_MAP = {}
+
+try:
+    import csv
+    with open('SETC_tn.csv', 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            from_c = row.get('From', '').strip().upper()
+            to_c = row.get('To', '').strip().upper()
+            if from_c: TNSTC_PLACE_CODES[from_c] = from_c[:3]
+            if to_c: TNSTC_PLACE_CODES[to_c] = to_c[:3]
+    print(f"Loaded {len(TNSTC_PLACE_CODES)} TNSTC CSV codes.")
+except Exception as e:
+    print(f"Error loading SETC_tn.csv: {e}")
+
+try:
+    with open('placeid_tnstc_template.json', 'r') as f:
+        tnstc_places = json.load(f)
+        for place in tnstc_places:
+            p_name = place.get('value', '').strip().upper()
+            p_id = place.get('id', '')
+            if p_name and p_id:
+                TNSTC_JSON_MAP[p_name] = p_id
+    print(f"Loaded {len(TNSTC_JSON_MAP)} TNSTC JSON IDs.")
+except Exception as e:
+    print(f"Error loading TNSTC JSON map: {e}")
 
 def sunposition(lat,lon,timestamp):
 
@@ -200,7 +423,64 @@ def scrape_fare_only(from_id, to_id):
         print(f"Fare scraping error: {e}")
         return {}
 
+def detect_state_from_label(label):
+    label_upper = label.upper()
+    parts = [part.strip() for part in label.split(',')]
+    if len(parts) >= 2:
+        state_code = parts[1].upper()
+        kerala_codes = ['KL', 'KERALA']
+        andhra_codes = ['AP', 'ANDHRA PRADESH']
+        if state_code in kerala_codes:
+            return 'KSRTC'
+        elif state_code in andhra_codes:
+            return 'APSRTC'
+    city = parts[0].upper() if parts else label.upper()
+    
+    kerala_keywords = ['KERALA', 'KANNUR', 'KOCHI', 'THIRUVANANTHAPURAM', 
+                       'KOZHIKODE', 'THRISSUR', 'PALAKKAD', 'MALAPPURAM',
+                       'KOLLAM', 'ALAPPUZHA', 'KOTTAYAM', 'IDUKKI', 
+                       'ERNAKULAM', 'KASARAGOD', 'WAYANAD', 'PATHANAMTHITTA']
+    andhra_keywords = ['ANDHRA PRADESH', 'VIJAYAWADA', 'VISAKHAPATNAM', 
+                       'TIRUPATI', 'GUNTUR', 'NELLORE', 'KAKINADA',
+                       'RAJAHMUNDRY', 'KADAPA', 'ANANTAPUR', 'KURNOOL',
+                       'VIZIANAGARAM', 'ELURU', 'ONGOLE', 'NANDYAL',
+                       'MACHILIPATNAM', 'TENALI', 'CHITTOOR', 'HINDUPUR',
+                       'PRODDATUR', 'BHIMAVARAM', 'MADANAPALLE', 'GUNTAKAL',
+                       'DHARMAVARAM', 'GUDIVADA', 'SRIKAKULAM', 'NARASARAOPET',
+                       'TADIPATRI', 'TADEPALLIGUDEM', 'CHILAKALURIPET']
 
+    tamil_keywords = ['TAMIL NADU', 'CHENNAI', 'COIMBATORE', 'MADURAI', 
+                      'TRICHY', 'TIRUCHIRAPPALLI', 'SALEM', 'TIRUNELVELI',
+                      'ERODE', 'VELLORE', 'THOOTHUKUDI', 'THANJAVUR',
+                      'DINDIGUL', 'CUDDALORE', 'KANCHIPURAM', 'TIRUPPUR',
+                      'KARUR', 'RAJAPALAYAM', 'SIVAKASI', 'NAGERCOIL',
+                      'KUMBAKONAM', 'PUDUKKOTTAI', 'HOSUR','TN']
+
+    karnataka_keywords = ['KARNATAKA', 'BENGALURU', 'BANGALORE', 'MANGALORE', 'MYSURU', 'MYSORE', 'HUBLI', 'BELGAUM', 'SHIVAMOGGA', 'HASSAN', 'UDUPI','KR','KA']
+    tg_cities = ['HYDERABAD', 'WARANGAL', 'NIZAMABAD', 'KARIMNAGAR', 'KHAMMAM', 'SECUNDERABAD', 'KUKATPALLY', 'DILSUKHNAGAR', 'MIYAPUR', 'GACHIBOWLI','TG','TS']
+    
+    label_upper = label.upper()
+    
+    for city in tg_cities:
+        if city in label_upper:
+            return 'TGSRTC' 
+    for ka_city in karnataka_keywords:
+        if ka_city in city:
+            return 'KSRTC-KA'
+    for tcity in tamil_keywords:
+        if tcity in city:
+            return 'TNSTC'    
+
+    for kcity in kerala_keywords:
+        if kcity in city:
+            return 'KSRTC'
+    
+    # Check Andhra Pradesh
+    for acity in andhra_keywords:
+        if acity in city:
+            return 'APSRTC'
+
+    return 'APSRTC'
 @app.route('/get_route', methods=['POST'])
 def get_route():
     req_data = request.get_json()
@@ -255,56 +535,65 @@ def get_route():
         return jsonify({"error": "Could not parse route data"}), 500
 @app.route('/api/search',methods=['GET'])
 def api_search():
-	query=request.args.get('q','')
-
-	if len(query)<3:
-		return jsonify([])
-	url=f'{Base_url}/geocode/search'
-
-	param={
+    query=request.args.get('q','')
+    if len(query)<3:
+        return jsonify([])
+    url=f'{Base_url}/geocode/search'
+    param={
 	"api_key":ORS_API_KEY,
 	"text":query,
 	"size":5,
 	"boundary.country":"IN"
 	}
-	try:
-		response=requests.get(url,params=param)
-
-		if response.status_code ==200:
-			data=response.json()
-			suggestions=[]
-
-			for feature in data.get('features',[]):
-				suggestions.append({
+    try:
+        response=requests.get(url,params=param)
+        if response.status_code ==200:
+            data=response.json()
+            suggestions=[]
+            for feature in data.get('features',[]):
+                label=feature['properties']['label']
+                state=detect_state_from_label(label)
+                print(state)
+                suggestions.append({
 					"label":feature['properties']['label'],
-					"coords":feature['geometry']['coordinates']
+					"coords":feature['geometry']['coordinates'],
+                    "state":state
 					})
-			return jsonify(suggestions)
-	except Exception as e:
-		print(f"Geocode error:{e}")
-
-	return jsonify([])
+            return jsonify(suggestions)
+    except Exception as e:
+        print(f"Geocode error:{e}")
+    return jsonify([])
 
 @app.route('/api/resolve-apsrtc-id',methods=['POST'])
 def get_place_id():
-	req_data=request.get_json()
+    req_data=request.get_json()
+    if not req_data or 'address' not in req_data:
+        return jsonify({"error":"YEH SAHI BHAT NAHI HAI.. I got not place to give ID for"}),400
 
-	if not req_data or 'address' not in req_data:
-		return jsonify({"error":"YEH SAHI BHAT NAHI HAI.. I got not place to give ID for"}),400
-	search_string = req_data.get('address','').upper()
-	for depot in APSRTC_DATA:
-		stop_name = depot.get('value','').upper()
-		if stop_name and stop_name in search_string:
-			return jsonify({
+    search_string = req_data.get('address','').upper()
+    state=req_data.get('state','APSRTC')
+    if state == 'KSRTC':
+        data_source = KSRTC_DATA
+    elif state == 'TNSTC':
+        data_source = TNSTC_DATA
+    else:
+        data_source = APSRTC_DATA
+    for depot in data_source:
+        stop_name = depot.get('value','').upper()
+        if stop_name and stop_name in search_string:
+            return jsonify({
 				"id":depot['id'],
+				 "code": depot.get('code', ''),
 				"match":depot['value']
 				})
-	return jsonify({ "id":None})
+    return jsonify({ "id":None})
 
 @app.route('/api/find-buses',methods=['POST'])
 def findbus():
 	req_data = request.get_json()
 	from_id = req_data.get('fromId')
+	from_name = req_data.get('fromName', 'Unknown')
+	to_name = req_data.get('toName', 'Unknown')
 	to_id = req_data.get('toId')
 	if not from_id or not to_id:
 		return jsonify({"error": "Missing Start or End IDs"}), 400
@@ -340,7 +629,8 @@ def findbus():
 					bus['fare']=fare_map.get(bus_no,'N/A')
 					print(bus['fare'])
 				data['averageFare'] = avg_fare
-				print(data['averageFare'])
+
+			bus_cache.save_buses('APSRTC', from_name, to_name, data)
 			return jsonify(data)
 		else:
 			print(f"APSRTC Error: {response.status_code} - {response.text}")
@@ -380,7 +670,6 @@ def findbus2():
     }
 
     try:
-        print(f"Web: {from_id} -> {to_id} on {today_str}")
         response = requests.get(web_url, headers=headers, params=params)
         
         if response.status_code == 200:
@@ -454,6 +743,782 @@ def get_bus_stops():
     except Exception as e:
         print(f"Stops API Error: {e}")
         return jsonify({"error": str(e)}), 500
+
+@app.route('/api/find-buses-kerala', methods=['POST'])
+def find_buses_kerala():
+    req_data = request.get_json()
+    
+    from_name = req_data.get('fromName', '').split(',')[0].strip().upper()
+    to_name = req_data.get('toName', '').split(',')[0].strip().upper()
+    
+    if not from_name or not to_name:
+        return jsonify({"error": "Missing Locations"}), 400
+    
+    src_slug = from_name.replace(" ", "-")
+    dst_slug = to_name.replace(" ", "-")
+    
+    base_url = f"https://www.kbuses.in/v3/Find/source/{src_slug}/destination/{dst_slug}/type/all/timing/all"
+    
+    print(f"🔍 Fetching Kerala buses from: {base_url}")
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Referer": "https://www.kbuses.in/"
+    }
+
+    all_buses = []
+    current_page = 1
+    max_pages = 10
+    
+    try:
+        while current_page <= max_pages:
+            if current_page == 1:
+                page_url = base_url
+            else:
+                page_url = f"{base_url}?page={current_page}"
+            
+            response = requests.get(page_url, headers=headers, timeout=20)
+            
+            if response.status_code != 200:
+                print(f"{current_page} returned status: {response.status_code}")
+                break
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            bus_containers = soup.find_all('div', class_='indibus')
+            
+            if len(bus_containers) == 0:
+                print(f"No more buses found: {current_page}.")
+                break
+            
+            print(f"Found {len(bus_containers)} buses: {current_page}")
+            
+            for container in bus_containers:
+                try:
+                   
+                    bus_name_elem = container.find('span', class_='busname')
+                    if bus_name_elem:
+                        for icon in bus_name_elem.find_all('svg'):
+                            icon.decompose()
+                        bus_name = bus_name_elem.get_text(strip=True)
+                    else:
+                        bus_name = "KSRTC"
+
+                   
+                    bus_type_elem = container.find('div', class_='bustype')
+                    bus_type = bus_type_elem.get_text(strip=True) if bus_type_elem else "Ordinary"
+
+                    
+                    time_elem = container.find('span', class_='large_bold')
+                    start_time = time_elem.get_text(strip=True) if time_elem else "N/A"
+
+                   
+                    small_txts = container.find_all('span', class_='smalltxt')
+                    end_time = None
+                    duration = None
+                    
+                    for span in small_txts:
+                        txt = span.get_text(strip=True)
+                        
+                        if "@" in txt:
+                            parts = txt.split('@')
+                            if len(parts) > 1:
+                                end_time = parts[1].strip()
+                        
+                        elif "hour" in txt.lower() or "minute" in txt.lower():
+                            duration = txt
+                    route_info = ""
+                    details_elem = container.find('details')
+                    if details_elem:
+                        route_p = details_elem.find('p')
+                        if route_p:
+                            route_info = route_p.get_text(strip=True)
+                    fare = None
+                    bus_info_divs = container.find_all('div', class_='bus-info')
+                    for div in bus_info_divs:
+                        fare_text = div.get_text()
+                        if 'Fare:' in fare_text or '₹' in fare_text:
+                            import re
+                            fare_match = re.search(r'₹\s*(\d+)', fare_text)
+                            if fare_match:
+                                fare = fare_match.group(1)
+                                break
+
+                    detail_url = None
+                    detail_link = container.find('a', class_='btn-outline-success')
+                    
+                    if detail_link and detail_link.has_attr('href'):
+                        href = detail_link.get('href')
+                        if href.startswith('/'):
+                            detail_url = f"https://www.kbuses.in{href}"
+                        elif href.startswith('http'):
+                            detail_url = href
+                        else:
+                            detail_url = f"https://www.kbuses.in/{href}"
+
+                    bus_obj = {
+                        "oprsNo": bus_name,
+                        "serviceType": bus_type,
+                        "serviceStartTime": start_time,
+                        "serviceEndTime": end_time if end_time else "N/A",
+                        "duration": duration if duration else "N/A",
+                        "fare": fare if fare else "N/A",
+                        "depotName": "KERALA",
+                        "serviceDocId": detail_url,  # This is the critical field for stops
+                        "route": route_info,
+                        "journeyDate": datetime.now().strftime("%d/%m/%Y"),
+                        "page": current_page
+                    }
+                    
+                    all_buses.append(bus_obj)
+
+                except Exception as parse_err:
+                    print(f"Error parsing bus: {parse_err}")
+                    import traceback
+                    traceback.print_exc()
+                    continue
+            
+            pagination = soup.find('nav', {'aria-label': 'Page navigation'})
+            if not pagination:
+                break
+            
+            next_link = None
+            for link in pagination.find_all('a'):
+                if 'Next' in link.get_text():
+                    next_link = link.get('href')
+                    break
+            
+            if not next_link:
+                print(f"No more pages. Stopping: {current_page}.")
+                break
+            
+            current_page += 1
+        
+        print(f"Total buses scraped: {len(all_buses)} from {current_page} pages")
+        
+        return jsonify({
+            "data": all_buses, 
+            "source": "KBuses", 
+            "totalPages": current_page,
+            "totalBuses": len(all_buses)
+        })
+
+    except requests.Timeout:
+        print("Request timeout")
+        return jsonify({"error": "Request timeout"}), 504
+    except Exception as e:
+        print(f"Scraper Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/get-kerala-bus-stops', methods=['POST'])
+def get_kerala_bus_stops():
+    req_data = request.get_json()
+    detail_url = req_data.get('detailUrl')
+    
+    if not detail_url:
+        return jsonify({"error": "Missing detail URL"}), 400
+    
+    if detail_url.startswith('/'):
+        detail_url = f"https://www.kbuses.in{detail_url}"
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Referer": "https://www.kbuses.in/"
+    }
+    
+    try:
+        response = requests.get(detail_url, headers=headers, timeout=15)
+        
+        if response.status_code != 200:
+            return jsonify({"error": f"Failed to fetch bus details: {response.status_code}"}), 500
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        stops = []
+  
+        table = soup.find('table', class_='table-hover')
+        
+        if table:
+           
+            rows = table.find_all('tr')
+            
+            current_stop_name = ""
+            
+            for row in rows:
+                
+                header_th = row.find('th', class_='cell1')
+                if header_th:
+                    current_stop_name = header_th.get_text(strip=True)
+                    continue
+                
+                
+                cols = row.find_all('td')
+                if cols and len(cols) >= 2 and current_stop_name:
+                    stop_time = cols[1].get_text(strip=True)
+                    
+                    
+                    detail_name = cols[0].get_text(strip=True)
+                    
+                    stops.append({
+                        "placeName": current_stop_name,
+                        "detailName": detail_name,      
+                        "scheduleArrTime": stop_time,
+                        "seqNo": len(stops) + 1
+                    })
+                    
+                   
+                    current_stop_name = ""
+        
+      
+        if not stops:
+            indibus_div = soup.find('div', class_='card indibus smalltxt')
+            if indibus_div:
+                via_div = indibus_div.find('div', style="padding: 5px;")
+                if via_div:
+                    text = via_div.get_text(strip=True)
+                    if "Via" in text:
+                        
+                        clean_text = text.replace("Via ➥", "").replace("Via", "")
+                        parts = clean_text.split('⤳')
+                        for i, part in enumerate(parts):
+                            stops.append({
+                                "placeName": part.strip(),
+                                "scheduleArrTime": "--:--", 
+                                "seqNo": i + 1
+                            })
+
+        print(f"Extracted {len(stops)} stops for K bus")
+        return jsonify({"data": stops})
+        
+    except Exception as e:
+        print(f"Error fetching Kerala bus stops: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/find-buses-tnstc', methods=['POST'])
+def find_buses_tnstc():
+    req_data = request.get_json()
+    
+    # 1. Input Handling
+    from_name = req_data.get('fromName', '')
+    to_name = req_data.get('toName', '')
+    
+    if not from_name or not to_name:
+        return jsonify({"error": "Missing location names"}), 400
+    
+    from_place = from_name.split(',')[0].strip().upper()
+    to_place = to_name.split(',')[0].strip().upper()
+    
+    print(f"\nTNSTC Request: {from_place} -> {to_place}")
+
+    from_code = TNSTC_PLACE_CODES.get(from_place, from_place[:3])
+    to_code = TNSTC_PLACE_CODES.get(to_place, to_place[:3])
+    
+    if from_place not in TNSTC_PLACE_CODES:
+        for k, v in TNSTC_PLACE_CODES.items():
+            if from_place in k: from_code = v; break
+    if to_place not in TNSTC_PLACE_CODES:
+        for k, v in TNSTC_PLACE_CODES.items():
+            if to_place in k: to_code = v; break
+
+    from_id = TNSTC_JSON_MAP.get(from_place)
+    to_id = TNSTC_JSON_MAP.get(to_place)
+
+    if not from_id:
+        for k, v in TNSTC_JSON_MAP.items():
+            if from_place in k: from_id = v; break
+    if not to_id:
+        for k, v in TNSTC_JSON_MAP.items():
+            if to_place in k: to_id = v; break
+    PLACE_ID_MAP = {
+        'TRICHY': '74', 'TIRUCHIRAPPALLI': '74', 'COIMBATORE': '114',
+        'CHENNAI': '1358', 'MADURAI': '190', 'SALEM': '533',
+        'KUMBAKONAM': '80', 'THANJAVUR': '190', 'TIRUNELVELI': '190',
+        'ERODE': '190', 'KARUR': '190'
+    }
+    if not from_id: from_id = PLACE_ID_MAP.get(from_place)
+    if not to_id: to_id = PLACE_ID_MAP.get(to_place)
+
+    if not from_id or not to_id:
+        return jsonify({"error": f"Place ID not found for {from_place} or {to_place}"}), 400
+
+    today_str = datetime.now().strftime("%d/%m/%Y")
+    url = "https://www.tnstc.in/OTRSOnline/jqreq.do"
+    
+    payload = {
+        "hiddenStartPlaceID": from_id,
+        "hiddenEndPlaceID": to_id,
+        "txtStartPlaceCode": from_code,
+        "txtEndPlaceCode": to_code,
+        "hiddenStartPlaceName": from_place,
+        "hiddenEndPlaceName": to_place,
+        "matchStartPlace": from_place,
+        "matchEndPlace": to_place,
+        "hiddenCurrentDate": today_str,
+        "hiddenOnwardJourneyDate": today_str,
+        "hiddenAction": "SearchService",
+        "languageType": "E",
+        "checkSingleLady": "N",
+        "txtJourneyDate": "DD/MM/YYYY",
+        "txtReturnDate": "DD/MM/YYYY",
+        "hiddenMaxNoOfPassengers": "16",
+        "selectStartPlace": from_code,
+        "selectEndPlace": to_code,
+    }
+
+    try:
+
+        session = tnstc_manager.get_valid_session()
+        
+        response = session.post(url, data=payload, timeout=20)
+        
+        # Check if session expired during request (Specific TNSTC error check)
+        if "Session Expired" in response.text or response.status_code != 200:
+            print("⚠️ Session expired during request. Retrying...")
+            tnstc_manager.refresh_session() # Force refresh
+            session = tnstc_manager.get_valid_session()
+            response = session.post(url, data=payload, timeout=20)
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        bus_items = soup.find_all('div', class_='bus-item')
+        
+        buses = []
+        for item in bus_items:
+            try:
+                operator_elem = item.find('span', class_='operator-name')
+                operator = operator_elem.get_text(strip=True) if operator_elem else "TNSTC"
+                
+                type_spans = item.find_all('span', class_='text-muted')
+                bus_type = type_spans[0].get_text(strip=True) if type_spans else "Unknown"
+                
+                trip_link = item.find('a', href=True)
+                trip_code = trip_link.get_text(strip=True) if trip_link else "N/A"
+                
+                time_divs = item.find_all('div', class_='time-info')
+                start_time = "N/A"
+                end_time = "N/A"
+                
+                if len(time_divs) >= 2:
+                    start_span = time_divs[0].find('span', class_='text-dark')
+                    start_time = start_span.get_text(strip=True) if start_span else "N/A"
+                    end_span = time_divs[-1].find('span', class_='text-dark')
+                    end_time = end_span.get_text(strip=True) if end_span else "N/A"
+                
+                duration_elem = item.find('span', class_='duration')
+                duration = duration_elem.get_text(strip=True) if duration_elem else "N/A"
+                
+                via_elem = item.find('small', style=lambda x: x and 'blue' in x)
+                via = via_elem.get_text(strip=True).replace('Via-', '') if via_elem else ""
+                
+                price_elem = item.find('div', class_='price')
+                fare = price_elem.get_text(strip=True).replace('Rs', '').strip() if price_elem else "N/A"
+                
+                seats_elem = item.find('span', class_='text-1')
+                seats = seats_elem.get_text(strip=True).replace('Seats Available', '').strip() if seats_elem else "N/A"
+                
+                buses.append({
+                    "oprsNo": trip_code,
+                    "serviceType": bus_type,
+                    "serviceStartTime": start_time,
+                    "serviceEndTime": end_time,
+                    "depotName": operator,
+                    "duration": duration,
+                    "via": via,
+                    "fare": fare,
+                    "availableSeats": seats,
+                    "journeyDate": today_str,
+                    "source": "TNSTC"
+                })
+            except Exception:
+                continue
+
+        print(f"Found {len(buses)} buses")
+        result={
+        	"data":buses,
+        	"source":"TNSTC",
+        	"totalBuses":"len(buses)"
+        }
+        bus_cache.save_buses('TNSTC', from_place, to_place, result)
+        return jsonify({
+            "data": buses,
+            "source": "TNSTC",
+            "totalBuses": len(buses)
+        })
+
+    except Exception as e:
+        print(f"Connection Error: {e}")
+        return jsonify({"error": "TNSTC Connection Failed", "details": str(e)}), 500
+
+
+
+@app.route('/api/find-buses-ksrtc-karnataka', methods=['POST'])
+def find_buses_ksrtc_karnataka():
+    req_data = request.get_json()
+    from_name_raw = req_data.get('fromName', '').split(',')[0].strip()
+    to_name_raw = req_data.get('toName', '').split(',')[0].strip()
+    journey_date_iso = req_data.get('journeyDate')
+    
+    if not journey_date_iso:
+        journey_date_iso = datetime.now().strftime("%Y-%m-%d")
+    
+    from_id = (KSRTC_KARNATAKA_MAP.get(from_name_raw.lower()) or 
+               KSRTC_KARNATAKA_MAP.get(from_name_raw.upper()) or
+               KSRTC_KARNATAKA_MAP.get(from_name_raw.title()))
+    
+    to_id = (KSRTC_KARNATAKA_MAP.get(to_name_raw.lower()) or 
+             KSRTC_KARNATAKA_MAP.get(to_name_raw.upper()) or
+             KSRTC_KARNATAKA_MAP.get(to_name_raw.title()))
+    
+    if not from_id or not to_id:
+        print(f"City ID not found: {from_name_raw} or {to_name_raw}")
+        return jsonify({"error": "City not found in database"}), 400
+    
+    from_name = from_name_raw.title()
+    to_name = to_name_raw.title()
+    
+    try:
+        date_obj = datetime.strptime(journey_date_iso, "%Y-%m-%d")
+        indian_date = date_obj.strftime("%d-%m-%Y")
+    except:
+        indian_date = journey_date_iso
+    
+    session = requests.Session()
+    
+    base_headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+    }
+    
+    try:
+        session.get('https://ksrtc.in/oprs-web/', headers=base_headers, timeout=10)
+        
+        time.sleep(0.2)
+        search_url = f"https://ksrtc.in/search?mode=oneway&fromCity={from_id}|{from_name}&toCity={to_id}|{to_name}&departDate={indian_date}&stationInFromCity=&stationInToCity=&IsSingleLady=0"
+        
+        search_headers = base_headers.copy()
+        search_headers['Referer'] = 'https://ksrtc.in/oprs-web/'
+        
+        session.get(search_url, headers=search_headers, timeout=10)
+        
+        time.sleep(0.3)  
+        api_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0',
+            'Accept': '*/*',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Referer': search_url,
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'same-origin',
+        }
+        
+        session.get('https://ksrtc.in/api/resource/getStaticCityList', 
+                   headers=api_headers, timeout=10)
+        
+        api_url = "https://ksrtc.in/api/resource/searchRoutesV4"
+        
+        to_name_api = to_name
+        if to_name.lower() == "bengaluru":
+            to_name_api = "Bangalore"
+        
+        params = {
+            'fromCityID': str(from_id),
+            'toCityID': str(to_id),
+            'fromCityName': from_name,
+            'toCityName': to_name_api, 
+            'journeyDate': journey_date_iso,  
+            'mode': 'oneway'
+        }
+        
+        response = session.get(api_url, params=params, headers=api_headers, timeout=15)
+        
+        
+        if response.status_code != 200:
+
+            return jsonify({"error": f"API returned {response.status_code}"}), 500
+        
+        if len(response.content) < 10:
+            return jsonify({"error": "Empty response", "data": [], "totalBuses": 0})
+        
+        # Parse JSON
+        try:
+            raw_data = response.json()
+        except json.JSONDecodeError as e:
+            print(f"JSON Error: {e}")
+            print(f"Response preview: {response.text[:300]}")
+            return jsonify({"error": "Invalid JSON"}), 500
+        
+        # Validate data type
+        if not isinstance(raw_data, list):
+
+            return jsonify({
+                "error": "No buses found",
+                "data": [],
+                "totalBuses": 0,
+                "source": "KSRTC-KA"
+            })
+        
+        
+        formatted_buses = []
+        
+        for bus in raw_data:
+            try:
+                dep_str = bus.get('DepartureTime', '')
+                arr_str = bus.get('ArrivalTime', '')
+                
+                start_time = "N/A"
+                end_time = "N/A"
+                duration_str = "N/A"
+                arrival_date = ""
+                
+                if dep_str and arr_str:
+                    dep_dt = datetime.strptime(dep_str, "%Y-%m-%dT%H:%M:%S")
+                    arr_dt = datetime.strptime(arr_str, "%Y-%m-%dT%H:%M:%S")
+                    
+                    
+                    duration = arr_dt - dep_dt
+                    hours = duration.seconds // 3600
+                    minutes = (duration.seconds % 3600) // 60
+                    duration_str = f"{hours}h {minutes}m"
+                    
+                    start_time = dep_dt.strftime("%H:%M")
+                    end_time = arr_dt.strftime("%H:%M")
+                    arrival_date = arr_dt.strftime("%d %b")
+                
+                bus_obj = {
+                    "oprsNo": bus.get('TripCode', 'N/A'),
+                    "serviceType": bus.get('ServiceType', 'KSRTC'),
+                    "serviceStartTime": start_time,
+                    "serviceEndTime": end_time,
+                    "arrivalDate": arrival_date,
+                    "duration": duration_str,
+                    "fare": str(bus.get('Fare', 0)),
+                    "availableSeats": str(bus.get('AvailableSeats', 0)),
+                    "depotName": bus.get('CompanyName', 'KSRTC Karnataka'),
+                    "via": bus.get('ViaPlaces', ''),
+                    "amenities": bus.get('AmenitiesType', ''),
+                    "journeyDate": journey_date_iso,
+                    "source": "KSRTC-KA",
+                    "arrangement": bus.get('Arrangement', ''),
+                    "hasAC": bool(bus.get('HasAC', 0)),
+                    "hasSleeper": bool(bus.get('HasSleeper', 0)),
+                    "routeName": bus.get('RouteName', ''),
+                    "serviceId": bus.get('ServiceID', ''),
+                    "tripId": bus.get('TripID', ''),
+                    "serviceDocId": bus.get('RouteScheduleId') 
+                }
+                
+                formatted_buses.append(bus_obj)
+                
+            except Exception as parse_err:
+                print(f"  ⚠️ Parse error: {parse_err}")
+                continue
+        
+        return jsonify({
+            "success": True,
+            "data": formatted_buses,
+            "source": "KSRTC-KA",
+            "totalBuses": len(formatted_buses),
+            "route": f"{from_name} to {to_name}",
+            "date": journey_date_iso
+        })
+        
+    except requests.exceptions.Timeout:
+        return jsonify({"error": "Request timeout"}), 504
+    except requests.exceptions.ConnectionError:
+        return jsonify({"error": "Connection failed"}), 503
+    except Exception as e:
+        print(f" Error: {type(e).__name__}: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/get-ksrtc-ka-stops', methods=['POST'])
+def get_ksrtc_ka_stops():
+    req_data = request.get_json()
+    route_code = req_data.get('routeCode')
+    
+    if not route_code:
+        return jsonify({"error": "Missing Route Code"}), 400
+
+    print(f"Fetching KSRTC-KA Stops for: {route_code}")
+
+    session = requests.Session()
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        'Referer': 'https://ksrtc.in/oprs-web/',
+        'Origin': 'https://ksrtc.in'
+    }
+    session.headers.update(headers)
+
+    try:
+        session.get('https://ksrtc.in/oprs-web/', timeout=5)
+        
+        url = f"https://ksrtc.in/api/resource/ActiveMiddleCities"
+        params = {"RouteCode": route_code}
+        
+        response = session.get(url, params=params, timeout=10)
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            stops_list = []
+            raw_list = []
+
+            if isinstance(data, list):
+                raw_list = data
+            elif isinstance(data, dict):
+                raw_list = data.get("APIGetActiveMiddleCitiesListResult", [])
+                if not raw_list:
+                    raw_list = data.get("data", [])
+
+            for i, stop in enumerate(raw_list):
+                stops_list.append({
+                    "placeName": stop.get("CityName", "Unknown"),
+                    "scheduleArrTime": "--:--", 
+                    "seqNo": stop.get("Position", i+1)
+                })
+            stops_list.sort(key=lambda x: int(x['seqNo']))
+
+            return jsonify({"data": stops_list})
+        else:
+            print(f"KSRTC Stops API Error: {response.status_code}")
+            return jsonify({"error": "Failed to fetch stops"}), 500
+
+    except Exception as e:
+        print(f"KSRTC Stops Exception: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+
+def get_tgsrtc_db():
+    try:
+        conn = sqlite3.connect('tgsrtc.db')
+        conn.row_factory = sqlite3.Row
+        return conn
+    except Exception as e:
+        print(f"DB Connection Error: {e}")
+        return None
+
+@app.route('/api/tgsrtc/resolve-id', methods=['POST'])
+def resolve_tgsrtc_id():
+    req_data = request.get_json()
+    place_name = req_data.get('address', '').split(',')[0].strip() # Extract "Suryapet"
+    
+    if not place_name:
+        return jsonify({"error": "No place name provided"}), 400
+
+    conn = get_tgsrtc_db()
+    if not conn:
+        return jsonify({"error": "Database missing"}), 500
+        
+    cursor = conn.cursor()
+    
+    print(f"🟣 Searching TGSRTC DB for: {place_name}")
+
+    cursor.execute("SELECT stop_id, stop_name FROM stops WHERE stop_name LIKE ? LIMIT 1", (place_name,))
+    row = cursor.fetchone()
+
+    if not row:
+        cursor.execute("SELECT stop_id, stop_name FROM stops WHERE stop_name LIKE ? LIMIT 1", (f"{place_name}%",))
+        row = cursor.fetchone()
+    
+    if not row:
+        cursor.execute("SELECT stop_id, stop_name FROM stops WHERE stop_name LIKE ? LIMIT 1", (f"%{place_name}%",))
+        row = cursor.fetchone()
+
+    conn.close()
+
+    if row:
+        print(f"Found TGSRTC ID: {row['stop_id']} for {row['stop_name']}")
+        return jsonify({
+            "id": row['stop_id'], 
+            "match": row['stop_name'],
+            "state": "TGSRTC"
+        })
+    else:
+        print(f"No ID found in stops.txt for {place_name}")
+        return jsonify({"id": None})
+@app.route('/api/find-buses-tgsrtc', methods=['POST'])
+def find_buses_tgsrtc():
+    req_data = request.get_json()
+    from_id = req_data.get('fromId')
+    to_id = req_data.get('toId')
+
+    if not from_id or not to_id:
+        return jsonify({"error": "Missing valid GTFS Stop IDs"}), 400
+
+    conn = get_tgsrtc_db()
+    cursor = conn.cursor()
+
+    print(f"🟣 Finding TGSRTC Buses: {from_id} -> {to_id}")
+
+    query = '''
+        SELECT 
+            r.route_short_name,
+            r.route_long_name,
+            t.trip_id,
+            t.bus_class,
+            st1.departure_time as start_time,
+            st2.arrival_time as end_time
+        FROM stop_times st1
+        JOIN stop_times st2 ON st1.trip_id = st2.trip_id
+        JOIN trips t ON st1.trip_id = t.trip_id
+        JOIN routes r ON t.route_id = r.route_id
+        WHERE st1.stop_id = ? 
+          AND st2.stop_id = ?
+          AND CAST(st1.stop_sequence AS INTEGER) < CAST(st2.stop_sequence AS INTEGER)
+        ORDER BY st1.departure_time
+        LIMIT 50
+    '''
+
+    try:
+        cursor.execute(query, (from_id, to_id))
+        rows = cursor.fetchall()
+        
+        results = []
+        for row in rows:
+            # Calculate Duration
+            try:
+                t1 = datetime.strptime(row['start_time'], "%H:%M:%S")
+                t2 = datetime.strptime(row['end_time'], "%H:%M:%S")
+                duration = t2 - t1
+                hours, remainder = divmod(duration.seconds, 3600)
+                minutes = remainder // 60
+                dur_str = f"{hours}h {minutes}m"
+            except:
+                dur_str = "N/A"
+
+            results.append({
+                "oprsNo": row['route_short_name'], # e.g. 107VR
+                "serviceType": row['bus_class'] or "TGSRTC",
+                "serviceStartTime": row['start_time'][:5], # HH:MM
+                "serviceEndTime": row['end_time'][:5],
+                "duration": dur_str,
+                "fare": "N/A", # GTFS usually doesn't have fare
+                "depotName": "TGSRTC",
+                "journeyDate": datetime.now().strftime("%d-%m-%Y"),
+                "via": row['route_long_name'],
+                "source": "TGSRTC"
+            })
+            
+        conn.close()
+        print(f"Found {len(results)} TGSRTC buses")
+        return jsonify({"data": results, "source": "TGSRTC", "totalBuses": len(results)})
+
+    except Exception as e:
+        print(f"TG SQL Error: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 
 
 
